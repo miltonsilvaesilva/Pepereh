@@ -1,0 +1,27 @@
+---
+layout: default
+body_class: page
+---
+{%- assign other = site.posts | where: "ref", page.ref | where_exp: "p", "p.lang != page.lang" | first -%}
+<article class="section article">
+  <div class="container container--narrow">
+    <a href="{{ '/noticias/' | relative_url }}" class="back" data-i18n="news.back">← Todas as notícias</a>
+    <p class="post-card__meta"><span class="tag">{{ page.category }}</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time></p>
+    <h1 class="article__title">{{ page.title }}</h1>
+    {%- if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+    <div class="prose article__body">
+      {{ content }}
+    </div>
+    {%- if page.source_url %}
+    <p class="article__source"><span data-i18n="news.source">Fonte</span>: <a href="{{ page.source_url }}" target="_blank" rel="noopener">{{ page.source_name | default: page.source_url }}</a></p>
+    {%- endif %}
+    {%- if other %}
+    <p class="article__alt"><a href="{{ other.url | relative_url }}" data-lang-switch="{{ other.lang }}">{% if other.lang == "en" %}Read in English →{% else %}Ler em português →{% endif %}</a></p>
+    {%- endif %}
+    <div class="article__cta">
+      <p data-i18n="news.cta">Quer saber como este tema pode afectar o seu negócio?</p>
+      <a href="{{ '/#contacto' | relative_url }}" class="btn btn--primary" data-i18n="nav.contact">Pedir proposta</a>
+    </div>
+  </div>
+</article>
+<script>window.PEPEREH_PAGE_LANG = "{{ page.lang }}";</script>

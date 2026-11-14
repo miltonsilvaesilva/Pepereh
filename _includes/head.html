@@ -1,0 +1,44 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b14">
+{% seo %}
+<link rel="icon" type="image/png" href="{{ '/assets/icon.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/icon.png' | relative_url }}">
+<link rel="alternate" hreflang="pt" href="{{ page.url | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}?lang=en">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PEPEREH – Comércio e Serviços, Lda.",
+  "alternateName": "PEPEREH",
+  "slogan": "Think Big",
+  "url": "{{ site.url }}",
+  "logo": "{{ '/assets/icon.png' | absolute_url }}",
+  "email": "{{ site.data.contactos.email }}",
+  "foundingDate": "2025",
+  "areaServed": "AO",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bairro Nova Vida, Rua 60, Casa n.º 1633",
+    "addressLocality": "Luanda",
+    "addressRegion": "Kilamba Kiaxi",
+    "addressCountry": "AO"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "{{ site.data.contactos.email }}",
+    {%- if site.data.contactos.whatsapp != "" %}"telephone": "+{{ site.data.contactos.whatsapp }}",{% endif %}
+    "availableLanguage": ["Portuguese", "English"]
+  },
+  "sameAs": [{% assign first = true %}{% for r in site.data.contactos.redes %}{% if r[1] != "" %}{% unless first %}, {% endunless %}"{{ r[1] }}"{% assign first = false %}{% endif %}{% endfor %}]
+}
+</script>
+{%- if site.data.contactos.goatcounter != "" %}
+<script data-goatcounter="https://{{ site.data.contactos.goatcounter }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{%- endif %}

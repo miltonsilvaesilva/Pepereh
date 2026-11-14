@@ -2,10 +2,8 @@
 (function () {
   "use strict";
 
-  /* ---------- Configuração ---------- */
-  // Quando tiver o número de WhatsApp, escreva-o aqui só com dígitos, ex.: "244923000000"
-  var WHATSAPP = "";
-  var EMAIL = "geral@pepereh.com";
+  var CFG = window.PEPEREH || {};
+  var EMAIL = CFG.email || "geral@pepereh.com";
 
   /* ---------- Traduções (EN). O português está no próprio HTML. ---------- */
   var EN = {
@@ -14,11 +12,12 @@
     "nav.services": "Services",
     "nav.experience": "Experience",
     "nav.ventures": "Our Ventures",
-    "nav.contact": "Contact",
+    "nav.news": "News",
+    "nav.contact": "Request a proposal",
     "hero.eyebrow": "Technology · Consulting · Trade · Ventures",
     "hero.title": "Ideas that become <span class=\"grad\">reality.</span>",
     "hero.lead": "We are an Angolan company combining technology, consulting and business development to create practical, results-driven solutions.",
-    "hero.cta1": "Get in touch",
+    "hero.cta1": "Request a proposal",
     "hero.cta2": "Explore our services",
     "about.eyebrow": "Our story",
     "about.title": "Born in Luanda to turn ideas into concrete solutions.",
@@ -62,7 +61,7 @@
     "s5.4": "Building your online presence",
     "sc.t": "Facing a different challenge?",
     "sc.p": "Tell us about your problem. We help you find the right solution — and take responsibility for delivering it.",
-    "sc.b": "Talk to our team",
+    "sc.b": "Request a proposal",
     "who.eyebrow": "Who we work with",
     "who.title": "Solutions tailored to every client.",
     "w1.t": "Government & Public Institutions",
@@ -128,52 +127,96 @@
     "ventures.kipupu": "A digital platform for automotive services — our bet on creating new business models.",
     "ventures.next.t": "Upcoming projects",
     "ventures.next.p": "New brands and platforms in development.",
-    "contact.eyebrow": "Contact",
+    "news.eyebrow": "News",
+    "news.title": "What we're following.",
+    "news.lead": "Technology, business and innovation in Angola and worldwide — and what they mean for companies and institutions.",
+    "news.all": "See all",
+    "news.back": "← All news",
+    "news.source": "Source",
+    "news.cta": "Want to know how this topic could affect your business?",
+    "faq.eyebrow": "Frequently asked questions",
+    "faq.title": "Questions? We have answers.",
+    "q1": "Do you work outside Luanda?",
+    "a1": "Yes. We operate throughout Angola and are open to international projects and partnerships.",
+    "q2": "How much does a website, app or system cost?",
+    "a2": "Every project is different. Fill in the proposal request form and our team will send you a tailored proposal with pricing.",
+    "q3": "How long does a project take?",
+    "a3": "It depends on each client's needs. The timeline is agreed together and set out in the proposal.",
+    "q4": "Do you provide maintenance after delivery?",
+    "a4": "Yes. We provide support and maintenance after delivery, so your solution keeps working and evolving.",
+    "q5": "Do you sell equipment to individuals?",
+    "a5": "Yes. We supply IT and technology equipment to both individuals and businesses.",
+    "contact.eyebrow": "Request a proposal",
     "contact.title": "Let's turn your idea into reality.",
-    "contact.lead": "Get in touch. We reply promptly.",
+    "contact.lead": "Tell us what you need. Our team will reply with a tailored proposal.",
     "contact.email": "Email",
+    "contact.hours": "Hours",
     "contact.hq": "Head office",
+    "contact.book": "Book a meeting",
     "form.name": "Name",
     "form.org": "Company / Institution (optional)",
     "form.email": "Email",
-    "form.msg": "Message",
-    "form.send": "Send message",
-    "form.note": "When you send, your email app opens with the message ready for geral@pepereh.com.",
-    "form.error": "Please fill in your name, a valid email and your message.",
+    "form.phone": "Phone / WhatsApp (optional)",
+    "form.area": "Area of interest",
+    "form.type": "Client type",
+    "form.other": "Other",
+    "form.msg": "Describe your project or need",
+    "form.consent": "I have read and accept the <a href=\"" + (CFG.privacy || "/privacidade/") + "\">Privacy Policy</a>.",
+    "form.send": "Send request",
+    "nl.title": "Get our news",
+    "nl.text": "A monthly summary, no spam.",
+    "nl.ph": "Your email",
+    "nl.btn": "Subscribe",
     "footer.tag": "Ideas that become reality.",
     "footer.rights": "All rights reserved.",
-    "footer.top": "Back to top ↑"
+    "footer.privacy": "Privacy Policy",
+    "footer.terms": "Terms of Use"
   };
 
-  var META = {
+  var MSG = {
     pt: {
-      title: document.title,
-      desc: document.querySelector('meta[name="description"]').getAttribute("content"),
-      subject: "Contacto pelo site",
-      lines: ["Nome", "Empresa", "Email"]
+      invalid: "Preencha os campos obrigatórios, um email válido e aceite a Política de Privacidade.",
+      invalidNl: "Indique um email válido.",
+      sending: "A enviar…",
+      ok: "Obrigado! Recebemos o seu pedido e responderemos com brevidade.",
+      okNl: "Obrigado! A sua subscrição foi registada.",
+      fail: "Não foi possível enviar automaticamente. Vamos abrir o seu email com a mensagem pronta.",
+      failNl: "Não foi possível registar agora. Tente de novo ou escreva para " + EMAIL + ".",
+      subject: "Pedido de proposta",
+      subjectNl: "Nova subscrição da newsletter"
     },
     en: {
-      title: "PEPEREH — Think Big | Technology, Consulting and Ventures in Angola",
-      desc: "PEPEREH is an Angolan company based in Luanda, combining technology, consulting, trade and business development to create practical, results-driven solutions.",
-      subject: "Website enquiry",
-      lines: ["Name", "Company", "Email"]
+      invalid: "Please fill in the required fields, a valid email and accept the Privacy Policy.",
+      invalidNl: "Please enter a valid email.",
+      sending: "Sending…",
+      ok: "Thank you! We've received your request and will reply shortly.",
+      okNl: "Thank you! You're subscribed.",
+      fail: "We couldn't send it automatically. We'll open your email app with the message ready.",
+      failNl: "We couldn't subscribe you right now. Please try again or write to " + EMAIL + ".",
+      subject: "Proposal request",
+      subjectNl: "New newsletter subscription"
     }
   };
 
   /* ---------- Idioma ---------- */
   var textEls = document.querySelectorAll("[data-i18n]");
   var htmlEls = document.querySelectorAll("[data-i18n-html]");
+  var phEls = document.querySelectorAll("[data-i18n-ph]");
   var PT = {};
   textEls.forEach(function (el) { PT[el.getAttribute("data-i18n")] = el.textContent; });
   htmlEls.forEach(function (el) { PT[el.getAttribute("data-i18n-html")] = el.innerHTML; });
+  phEls.forEach(function (el) { PT[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder"); });
 
   var current = "pt";
 
   function store(key, val) {
-    try { if (val === undefined) return localStorage.getItem(key); localStorage.setItem(key, val); } catch (e) { return null; }
+    try {
+      if (val === undefined) return localStorage.getItem(key);
+      localStorage.setItem(key, val);
+    } catch (e) { return null; }
   }
 
-  function setLang(lang) {
+  function setLang(lang, persist) {
     current = lang === "en" ? "en" : "pt";
     var dict = current === "en" ? EN : PT;
     textEls.forEach(function (el) {
@@ -184,23 +227,31 @@
       var k = el.getAttribute("data-i18n-html");
       if (dict[k] != null) el.innerHTML = dict[k];
     });
+    phEls.forEach(function (el) {
+      var k = el.getAttribute("data-i18n-ph");
+      if (dict[k] != null) el.setAttribute("placeholder", dict[k]);
+    });
     document.documentElement.lang = current;
-    document.title = META[current].title;
-    document.querySelector('meta[name="description"]').setAttribute("content", META[current].desc);
     document.querySelectorAll(".lang [data-lang]").forEach(function (s) {
       s.classList.toggle("is-active", s.getAttribute("data-lang") === current);
     });
-    store("pepereh-lang", current);
+    if (persist !== false) store("pepereh-lang", current);
   }
 
+  var pageLang = window.PEPEREH_PAGE_LANG; // definido nas páginas de notícia
   var saved = store("pepereh-lang");
-  var initial = saved || ((navigator.language || "pt").toLowerCase().indexOf("pt") === 0 ? "pt" : "en");
-  if (/[?&]lang=en/.test(location.search)) initial = "en";
-  if (/[?&]lang=pt/.test(location.search)) initial = "pt";
-  setLang(initial);
+  var initial = pageLang || saved || "pt"; // português por omissão
+  var q = /[?&]lang=(pt|en)/.exec(location.search);
+  if (q && !pageLang) initial = q[1];
+  setLang(initial, !pageLang);
 
   document.getElementById("lang").addEventListener("click", function () {
-    setLang(current === "pt" ? "en" : "pt");
+    var next = current === "pt" ? "en" : "pt";
+    store("pepereh-lang", next);
+    // Numa notícia, ir para a versão no outro idioma, se existir
+    var alt = document.querySelector("[data-lang-switch=\"" + next + "\"]");
+    if (pageLang && alt) { location.href = alt.href; return; }
+    setLang(next);
   });
 
   /* ---------- Menu móvel ---------- */
@@ -214,45 +265,109 @@
   menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
 
-  /* ---------- Navegação com sombra ao rolar ---------- */
+  /* ---------- Navegação com linha ao rolar ---------- */
   var nav = document.querySelector(".nav");
   function onScroll() { nav.classList.toggle("is-scrolled", window.scrollY > 8); }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- WhatsApp ---------- */
-  if (WHATSAPP) {
-    var waUrl = "https://wa.me/" + WHATSAPP;
-    var pretty = "+" + WHATSAPP.replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
-    document.querySelectorAll(".js-wa").forEach(function (el) {
-      el.hidden = false;
-      if (el.tagName === "A") el.href = waUrl;
-    });
-    document.querySelectorAll(".js-wa-link").forEach(function (a) { a.href = waUrl; a.textContent = pretty; });
+  /* ---------- Estatísticas de cliques (GoatCounter) ---------- */
+  function track(name) {
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: "clique-" + name, title: name, event: true });
+      }
+    } catch (e) { /* sem estatísticas */ }
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-track]");
+    if (a) track(a.getAttribute("data-track"));
+  });
+
+  /* ---------- Formulários ---------- */
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function status(form, text, kind) {
+    var el = form.querySelector(".form__status");
+    if (!el) return;
+    el.hidden = !text;
+    el.textContent = text || "";
+    el.className = "form__status" + (kind ? " is-" + kind : "");
   }
 
-  /* ---------- Formulário (abre o email) ---------- */
-  var form = document.getElementById("form");
-  var err = document.getElementById("form-error");
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var f = form.elements;
-    var name = f.name.value.trim();
-    var org = f.org.value.trim();
-    var email = f.email.value.trim();
-    var msg = f.message.value.trim();
-    if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; return; }
-    err.hidden = true;
-    var L = META[current].lines;
-    var body = msg + "\n\n— \n" + L[0] + ": " + name + (org ? "\n" + L[1] + ": " + org : "") + "\n" + L[2] + ": " + email;
-    var subject = META[current].subject + " — " + name;
-    if (window.gtag) window.gtag("event", "contact_email");
-    window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  function send(data) {
+    if (!CFG.form) return Promise.reject(new Error("no endpoint"));
+    return fetch(CFG.form, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (String(j.success) !== "true") throw new Error(j.message || "failed");
+      return j;
+    });
+  }
+
+  document.querySelectorAll(".js-form").forEach(function (form) {
+    var kind = form.getAttribute("data-kind");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var m = MSG[current];
+      var f = form.elements;
+      if (f._honey && f._honey.value) return; // spam
+
+      if (kind === "newsletter") {
+        var nlEmail = f.email.value.trim();
+        if (!EMAIL_RE.test(nlEmail)) { status(form, m.invalidNl, "error"); return; }
+        status(form, m.sending);
+        send({ email: nlEmail, idioma: current, _subject: m.subjectNl, _template: "table", _captcha: "false" })
+          .then(function () { status(form, m.okNl, "ok"); form.reset(); track("newsletter"); })
+          .catch(function () { status(form, m.failNl, "error"); });
+        return;
+      }
+
+      var data = {
+        nome: f.nome.value.trim(),
+        empresa: f.empresa.value.trim(),
+        email: f.email.value.trim(),
+        telefone: f.telefone.value.trim(),
+        area: f.area.value,
+        tipo: f.tipo.value,
+        mensagem: f.mensagem.value.trim()
+      };
+      if (!data.nome || !data.mensagem || !EMAIL_RE.test(data.email) || !f.consentimento.checked) {
+        status(form, m.invalid, "error");
+        return;
+      }
+      var btn = form.querySelector("button[type=submit]");
+      btn.disabled = true;
+      status(form, m.sending);
+      var payload = Object.assign({}, data, {
+        idioma: current,
+        _subject: m.subject + " — " + data.nome,
+        _replyto: data.email,
+        _template: "table",
+        _captcha: "false"
+      });
+      send(payload)
+        .then(function () { status(form, m.ok, "ok"); form.reset(); track("proposta"); })
+        .catch(function () {
+          status(form, m.fail, "error");
+          var body = data.mensagem + "\n\n— \nNome: " + data.nome +
+            (data.empresa ? "\nEmpresa: " + data.empresa : "") +
+            "\nEmail: " + data.email +
+            (data.telefone ? "\nTelefone: " + data.telefone : "") +
+            "\nÁrea: " + data.area + "\nTipo de cliente: " + data.tipo;
+          setTimeout(function () {
+            location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(payload._subject) + "&body=" + encodeURIComponent(body);
+          }, 1200);
+        })
+        .then(function () { btn.disabled = false; });
+    });
   });
 
   /* ---------- Animação ao aparecer ---------- */
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    var targets = document.querySelectorAll(".head, .card, .who__item, .pillars li, .chips, .mv__box, .values > div, .venture, .stat, .split > *, .contact > *");
+    var targets = document.querySelectorAll(".head, .card, .who__item, .pillars li, .chips, .mv__box, .values > div, .venture, .stat, .split > *, .contact > *, .post-card");
     targets.forEach(function (el) { el.classList.add("reveal"); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -261,6 +376,4 @@
     }, { rootMargin: "0px 0px -8% 0px" });
     targets.forEach(function (el) { io.observe(el); });
   }
-
-  document.getElementById("year").textContent = new Date().getFullYear();
 })();

@@ -1,0 +1,31 @@
+# Contactos e ligações do site PEPEREH.
+# Deixe um campo vazio ("") para o esconder no site.
+
+email: "geral@pepereh.com"
+
+# WhatsApp: só dígitos, com o indicativo (244...)
+whatsapp: "244946325774"
+whatsapp_texto: "+244 946 325 774"
+
+horario_pt: "Segunda a sexta, 10h–17h"
+horario_en: "Monday to Friday, 10am–5pm"
+
+morada_linha1: "Bairro Nova Vida, Rua 60, Casa n.º 1633"
+morada_linha2: "Município de Kilamba Kiaxi, Luanda — Angola"
+
+redes:
+  facebook: "https://www.facebook.com/profile.php?id=61596369639526"
+  instagram: "https://www.instagram.com/pepereh.ao/"
+  linkedin: ""
+  tiktok: ""
+  youtube: ""
+  x: ""
+
+# Link da agenda para marcar reuniões (Google Calendar ou Calendly)
+agenda: ""
+
+# Código do GoatCounter (ex.: "pepereh" para pepereh.goatcounter.com)
+goatcounter: ""
+
+# Envio automático dos formulários (FormSubmit, gratuito)
+formulario: "https://formsubmit.co/ajax/geral@pepereh.com"

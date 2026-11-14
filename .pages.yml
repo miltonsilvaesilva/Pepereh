@@ -1,0 +1,53 @@
+# Painel de edição (Pages CMS — https://app.pagescms.org)
+media:
+  input: assets/media
+  output: /assets/media
+content:
+  - name: noticias
+    label: Notícias
+    type: collection
+    path: _posts
+    view:
+      fields: [title, lang, category, date]
+    fields:
+      - { name: title, label: Título, type: string, required: true }
+      - name: lang
+        label: Idioma
+        type: select
+        options: { values: [pt, en] }
+        default: pt
+      - { name: ref, label: "Identificador (igual em PT e EN, sem espaços, ex.: angola-ia-2026)", type: string, required: true }
+      - { name: date, label: Data, type: date }
+      - { name: summary, label: Resumo (máx. 160 caracteres), type: text }
+      - name: category
+        label: Categoria
+        type: select
+        options: { values: [Tecnologia, Consultoria, Comércio, Negócios, Marketing, Angola] }
+      - { name: source_name, label: Nome da fonte, type: string }
+      - { name: source_url, label: Link da fonte, type: string }
+      - { name: body, label: Texto, type: rich-text }
+  - name: contactos
+    label: Contactos e redes sociais
+    type: file
+    path: _data/contactos.yml
+    fields:
+      - { name: email, label: Email, type: string }
+      - { name: whatsapp, label: "WhatsApp (só dígitos, ex.: 244946325774)", type: string }
+      - { name: whatsapp_texto, label: WhatsApp (como aparece no site), type: string }
+      - { name: horario_pt, label: Horário (PT), type: string }
+      - { name: horario_en, label: Horário (EN), type: string }
+      - { name: morada_linha1, label: Morada (linha 1), type: string }
+      - { name: morada_linha2, label: Morada (linha 2), type: string }
+      - name: redes
+        label: Redes sociais (deixe vazio para esconder)
+        type: object
+        fields:
+          - { name: facebook, label: Facebook, type: string }
+          - { name: instagram, label: Instagram, type: string }
+          - { name: linkedin, label: LinkedIn, type: string }
+          - { name: tiktok, label: TikTok, type: string }
+          - { name: youtube, label: YouTube, type: string }
+          - { name: x, label: X (Twitter), type: string }
+      - { name: agenda, label: Link da agenda (Google Calendar / Calendly), type: string }
+      - { name: goatcounter, label: "Código GoatCounter (ex.: pepereh)", type: string }
+      - { name: formulario, label: Endereço de envio dos formulários, type: string }

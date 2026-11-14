@@ -1,0 +1,25 @@
+{%- assign r = site.data.contactos.redes -%}
+{%- assign c = site.data.contactos -%}
+<ul class="social{% if include.light %} social--light{% endif %}" aria-label="Redes sociais">
+  {%- if c.whatsapp != "" %}
+  <li><a href="https://wa.me/{{ c.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp" data-track="whatsapp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 000-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.1 5.1 0 001.1 2.7 11.6 11.6 0 004.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.3c0-.1-.2-.2-.4-.3z"/></svg></a></li>
+  {%- endif %}
+  {%- if r.facebook != "" %}
+  <li><a href="{{ r.facebook }}" target="_blank" rel="noopener" aria-label="Facebook" data-track="facebook"><svg viewBox="0 0 24 24"><path d="M9.1 23.7v-8H6.6V12h2.5v-1.6c0-4.1 1.8-6 5.9-6 .8 0 2.1.2 2.6.3v3.3h-1.4c-1.6 0-2.3.6-2.3 2.1V12h3.6l-.6 3.7h-3V24C19.4 23.2 24 18.2 24 12 24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.4 9.1 11.7z"/></svg></a></li>
+  {%- endif %}
+  {%- if r.instagram != "" %}
+  <li><a href="{{ r.instagram }}" target="_blank" rel="noopener" aria-label="Instagram" data-track="instagram"><svg viewBox="0 0 24 24" class="stroke"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></a></li>
+  {%- endif %}
+  {%- if r.linkedin != "" %}
+  <li><a href="{{ r.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" data-track="linkedin"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></li>
+  {%- endif %}
+  {%- if r.tiktok != "" %}
+  <li><a href="{{ r.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok" data-track="tiktok"><svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03a10.7 10.7 0 01-5.82-1.9c-.01 2.92.01 5.84-.02 8.75a7.6 7.6 0 01-1.35 3.94 7.4 7.4 0 01-5.91 3.21 7.3 7.3 0 01-7.73-6.74c-.02-.5-.03-1-.01-1.49a7.5 7.5 0 018.73-6.68c.02 1.48-.04 2.96-.04 4.44a3.4 3.4 0 00-4.38 2.12c-.21.51-.15 1.07-.14 1.61a3.3 3.3 0 006.27 1.26c.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></li>
+  {%- endif %}
+  {%- if r.youtube != "" %}
+  <li><a href="{{ r.youtube }}" target="_blank" rel="noopener" aria-label="YouTube" data-track="youtube"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3 3 0 00.5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3 3 0 002.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3 3 0 002.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a></li>
+  {%- endif %}
+  {%- if r.x != "" %}
+  <li><a href="{{ r.x }}" target="_blank" rel="noopener" aria-label="X" data-track="x"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a></li>
+  {%- endif %}
+</ul>

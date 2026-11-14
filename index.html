@@ -1,51 +1,9 @@
-<!doctype html>
-<html lang="pt">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PEPEREH — Think Big | Tecnologia, Consultoria e Negócios em Angola</title>
-  <meta name="description" content="A PEPEREH é uma empresa angolana, sediada em Luanda, que combina tecnologia, consultoria, comércio e desenvolvimento de negócios para criar soluções práticas e orientadas para resultados.">
-  <meta name="theme-color" content="#0b0b14">
-  <link rel="icon" type="image/png" href="assets/icon.png">
-  <link rel="apple-touch-icon" href="assets/icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="PEPEREH — Think Big">
-  <meta property="og:description" content="Ideias que se tornam realidade. Tecnologia, consultoria, comércio e desenvolvimento de negócios em Angola.">
-  <meta property="og:image" content="assets/logo-thinkbig.webp">
-  <meta property="og:locale" content="pt_AO">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<a class="skip" href="#main" data-i18n="skip">Saltar para o conteúdo</a>
-
-<header class="nav" id="top">
-  <div class="container nav__inner">
-    <a href="#top" class="nav__brand" aria-label="PEPEREH — início">
-      <img src="assets/logo-wordmark.svg" alt="PEPEREH" width="140" height="30">
-    </a>
-    <nav class="nav__links" id="menu" aria-label="Principal">
-      <a href="#sobre" data-i18n="nav.about">Sobre</a>
-      <a href="#servicos" data-i18n="nav.services">Serviços</a>
-      <a href="#experiencia" data-i18n="nav.experience">Experiência</a>
-      <a href="#negocios" data-i18n="nav.ventures">Nossos Negócios</a>
-      <a href="#contacto" class="btn btn--sm btn--primary" data-i18n="nav.contact">Contacto</a>
-    </nav>
-    <div class="nav__tools">
-      <button class="lang" id="lang" type="button" aria-label="Mudar idioma / Change language">
-        <span data-lang="pt">PT</span><span class="lang__sep">|</span><span data-lang="en">EN</span>
-      </button>
-      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<main id="main">
+---
+layout: default
+title: "Tecnologia, Consultoria e Negócios em Angola"
+description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de software, websites e aplicações, sistemas ERP, interoperabilidade e Janela Única, consultoria empresarial, equipamentos informáticos e transformação digital em Angola."
+---
+{%- assign c = site.data.contactos -%}
 
   <!-- HERO -->
   <section class="hero">
@@ -56,13 +14,13 @@
         <h1 data-i18n-html="hero.title">Ideias que se tornam <span class="grad">realidade.</span></h1>
         <p class="lead" data-i18n="hero.lead">Somos uma empresa angolana que combina tecnologia, consultoria e desenvolvimento de negócios para criar soluções práticas, orientadas para resultados.</p>
         <div class="hero__cta">
-          <a href="#contacto" class="btn btn--primary" data-i18n="hero.cta1">Fale connosco</a>
+          <a href="#contacto" class="btn btn--primary" data-i18n="hero.cta1">Pedir proposta</a>
           <a href="#servicos" class="btn btn--ghost" data-i18n="hero.cta2">Conheça os nossos serviços</a>
         </div>
       </div>
       <div class="hero__art" aria-hidden="true">
         <div class="orb">
-          <img src="assets/icon.png" alt="" width="220" height="218">
+          <img src="{{ '/assets/icon.png' | relative_url }}" alt="" width="220" height="218">
         </div>
         <p class="hero__tag">think big<span class="grad">.</span></p>
       </div>
@@ -155,7 +113,7 @@
         <article class="card card--cta">
           <h3 data-i18n="sc.t">Tem um desafio diferente?</h3>
           <p data-i18n="sc.p">Conte-nos o seu problema. Ajudamos a encontrar a solução certa — e assumimos a responsabilidade pela execução.</p>
-          <a href="#contacto" class="btn btn--light" data-i18n="sc.b">Falar com a equipa</a>
+          <a href="#contacto" class="btn btn--light" data-i18n="sc.b">Pedir proposta</a>
         </article>
       </div>
     </div>
@@ -270,76 +228,148 @@
     </div>
   </section>
 
+  <!-- NOTÍCIAS -->
+  {%- assign pt_posts = site.posts | where: "lang", "pt" -%}
+  {%- if pt_posts.size > 0 %}
+  <section class="section section--tint" id="noticias">
+    <div class="container">
+      <div class="head head--row">
+        <div>
+          <p class="eyebrow" data-i18n="news.eyebrow">Notícias</p>
+          <h2 data-i18n="news.title">O que estamos a acompanhar.</h2>
+        </div>
+        <a href="{{ '/noticias/' | relative_url }}" class="btn btn--ghost btn--sm" data-i18n="news.all">Ver todas</a>
+      </div>
+      {%- assign en_posts = site.posts | where: "lang", "en" -%}
+      <div class="posts" data-only="pt">
+        {%- for post in pt_posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
+      </div>
+      <div class="posts" data-only="en">
+        {%- for post in en_posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
+      </div>
+    </div>
+  </section>
+  {%- endif %}
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container split">
+      <div>
+        <p class="eyebrow" data-i18n="faq.eyebrow">Perguntas frequentes</p>
+        <h2 data-i18n="faq.title">Tem dúvidas? Respondemos.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary data-i18n="q1">Trabalham fora de Luanda?</summary>
+          <p data-i18n="a1">Sim. Actuamos em todo o território angolano e estamos abertos a projectos e parcerias internacionais.</p>
+        </details>
+        <details>
+          <summary data-i18n="q2">Quanto custa um site, uma aplicação ou um sistema?</summary>
+          <p data-i18n="a2">Cada projecto é diferente. Preencha o formulário de pedido de proposta e a nossa equipa envia-lhe uma proposta com o valor, adaptada às suas necessidades.</p>
+        </details>
+        <details>
+          <summary data-i18n="q3">Quanto tempo demora um projecto?</summary>
+          <p data-i18n="a3">Depende das necessidades de cada cliente. O prazo é definido em conjunto e fica indicado na proposta.</p>
+        </details>
+        <details>
+          <summary data-i18n="q4">Fazem manutenção depois da entrega?</summary>
+          <p data-i18n="a4">Sim. Prestamos suporte e manutenção após a entrega, para garantir que a solução continua a funcionar e a evoluir.</p>
+        </details>
+        <details>
+          <summary data-i18n="q5">Vendem equipamentos a particulares?</summary>
+          <p data-i18n="a5">Sim. Fornecemos equipamentos informáticos e tecnológicos a particulares e a empresas.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACTO -->
   <section class="section section--dark" id="contacto">
     <div class="container contact">
       <div>
-        <p class="eyebrow eyebrow--light" data-i18n="contact.eyebrow">Contacto</p>
+        <p class="eyebrow eyebrow--light" data-i18n="contact.eyebrow">Pedir proposta</p>
         <h2 data-i18n="contact.title">Vamos transformar a sua ideia em realidade.</h2>
-        <p class="lead" data-i18n="contact.lead">Fale connosco. Respondemos com brevidade.</p>
+        <p class="lead" data-i18n="contact.lead">Conte-nos o que precisa. A nossa equipa responde com uma proposta à medida.</p>
         <ul class="contact__list">
+          {%- if c.whatsapp != "" %}
+          <li>
+            <span class="contact__label">WhatsApp</span>
+            <a href="https://wa.me/{{ c.whatsapp }}" target="_blank" rel="noopener" data-track="whatsapp">{{ c.whatsapp_texto }}</a>
+          </li>
+          {%- endif %}
           <li>
             <span class="contact__label" data-i18n="contact.email">Email</span>
-            <a href="mailto:geral@pepereh.com">geral@pepereh.com</a>
+            <a href="mailto:{{ c.email }}" data-track="email">{{ c.email }}</a>
           </li>
-          <li class="js-wa" hidden>
-            <span class="contact__label">WhatsApp</span>
-            <a class="js-wa-link" href="#" target="_blank" rel="noopener"></a>
+          <li>
+            <span class="contact__label" data-i18n="contact.hours">Horário</span>
+            <span class="contact__value" data-only="pt">{{ c.horario_pt }}</span><span class="contact__value" data-only="en">{{ c.horario_en }}</span>
           </li>
           <li>
             <span class="contact__label" data-i18n="contact.hq">Sede</span>
-            <address>Bairro Nova Vida, Rua 60, Casa n.º 1633<br>Município de Kilamba Kiaxi, Luanda — Angola</address>
+            <address>{{ c.morada_linha1 }}<br>{{ c.morada_linha2 }}</address>
           </li>
         </ul>
+        {%- if c.agenda != "" %}
+        <a href="{{ c.agenda }}" target="_blank" rel="noopener" class="btn btn--light contact__book" data-track="agenda" data-i18n="contact.book">Marcar uma reunião</a>
+        {%- endif %}
+        {% include redes.html light=true %}
       </div>
-      <form class="form" id="form" novalidate>
+      <form class="form js-form" data-kind="proposta" novalidate>
+        <div class="form__row">
+          <label>
+            <span data-i18n="form.name">Nome</span>
+            <input name="nome" type="text" autocomplete="name" required>
+          </label>
+          <label>
+            <span data-i18n="form.org">Empresa / Instituição (opcional)</span>
+            <input name="empresa" type="text" autocomplete="organization">
+          </label>
+        </div>
+        <div class="form__row">
+          <label>
+            <span data-i18n="form.email">Email</span>
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span data-i18n="form.phone">Telefone / WhatsApp (opcional)</span>
+            <input name="telefone" type="tel" autocomplete="tel" inputmode="tel">
+          </label>
+        </div>
+        <div class="form__row">
+          <label>
+            <span data-i18n="form.area">Área de interesse</span>
+            <select name="area">
+              <option value="Tecnologia e Transformação Digital" data-i18n="s1.t">Tecnologia e Transformação Digital</option>
+              <option value="Consultoria Empresarial" data-i18n="s2.t">Consultoria Empresarial</option>
+              <option value="Comércio e Fornecimento" data-i18n="s3.t">Comércio e Fornecimento</option>
+              <option value="Desenvolvimento de Negócios" data-i18n="s4.t">Desenvolvimento de Negócios</option>
+              <option value="Marketing e Comunicação" data-i18n="s5.t">Marketing e Comunicação</option>
+              <option value="Outro" data-i18n="form.other">Outro</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="form.type">Tipo de cliente</span>
+            <select name="tipo">
+              <option value="Empresa (PME)" data-i18n="w3.t">Pequenas e Médias Empresas</option>
+              <option value="Grande empresa" data-i18n="w2.t">Grandes Empresas</option>
+              <option value="Estado / Instituição pública" data-i18n="w1.t">Estado e Instituições Públicas</option>
+              <option value="Startup / Empreendedor" data-i18n="w4.t">Startups e Empreendedores</option>
+              <option value="Particular" data-i18n="w5.t">Particulares</option>
+            </select>
+          </label>
+        </div>
         <label>
-          <span data-i18n="form.name">Nome</span>
-          <input name="name" type="text" autocomplete="name" required>
+          <span data-i18n="form.msg">Descreva o seu projecto ou necessidade</span>
+          <textarea name="mensagem" rows="5" required></textarea>
         </label>
-        <label>
-          <span data-i18n="form.org">Empresa / Instituição (opcional)</span>
-          <input name="org" type="text" autocomplete="organization">
+        <label class="check">
+          <input type="checkbox" name="consentimento" required>
+          <span data-i18n-html="form.consent">Li e aceito a <a href="{{ '/privacidade/' | relative_url }}">Política de Privacidade</a>.</span>
         </label>
-        <label>
-          <span data-i18n="form.email">Email</span>
-          <input name="email" type="email" autocomplete="email" required>
-        </label>
-        <label>
-          <span data-i18n="form.msg">Mensagem</span>
-          <textarea name="message" rows="5" required></textarea>
-        </label>
-        <button type="submit" class="btn btn--primary btn--block" data-i18n="form.send">Enviar mensagem</button>
-        <p class="form__note" data-i18n="form.note">Ao enviar, abrimos o seu programa de email com a mensagem pronta para geral@pepereh.com.</p>
-        <p class="form__error" id="form-error" role="alert" hidden data-i18n="form.error">Preencha o nome, um email válido e a mensagem.</p>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn--primary btn--block" data-i18n="form.send">Enviar pedido</button>
+        <p class="form__status" role="status" hidden></p>
       </form>
     </div>
   </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer__inner">
-    <div>
-      <img src="assets/logo-white.png" alt="PEPEREH — think big." width="160" height="34" class="footer__logo">
-      <p class="footer__tag" data-i18n="footer.tag">Ideias que se tornam realidade.</p>
-    </div>
-    <div class="footer__info">
-      <p><strong>PEPEREH – Comércio e Serviços, Lda.</strong></p>
-      <p>Bairro Nova Vida, Rua 60, Casa n.º 1633, Kilamba Kiaxi, Luanda — Angola</p>
-      <p><a href="mailto:geral@pepereh.com">geral@pepereh.com</a></p>
-    </div>
-  </div>
-  <div class="container footer__bottom">
-    <p>© <span id="year">2026</span> PEPEREH. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
-    <a href="#top" data-i18n="footer.top">Voltar ao topo ↑</a>
-  </div>
-</footer>
-
-<a class="wa-float js-wa" hidden href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 000-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.1 5.1 0 001.1 2.7 11.6 11.6 0 004.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.3c0-.1-.2-.2-.4-.3z"/></svg>
-</a>
-
-<script src="script.js"></script>
-</body>
-</html>

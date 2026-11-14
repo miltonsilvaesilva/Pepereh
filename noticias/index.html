@@ -1,0 +1,25 @@
+---
+layout: default
+title: "Notícias"
+description: "Notícias e análises da PEPEREH sobre tecnologia, consultoria, negócios e transformação digital em Angola e no mundo."
+body_class: page
+---
+<section class="section">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow" data-i18n="news.eyebrow">Notícias</p>
+      <h1 class="page__title" data-i18n="news.title">O que estamos a acompanhar.</h1>
+      <p class="lead" data-i18n="news.lead">Tecnologia, negócios e inovação em Angola e no mundo — e o que significam para empresas e instituições.</p>
+    </div>
+    {%- assign pt_posts = site.posts | where: "lang", "pt" -%}
+    {%- assign en_posts = site.posts | where: "lang", "en" -%}
+    <div class="posts" data-only="pt">
+      {%- for post in pt_posts %}{% include post-card.html post=post %}{% endfor %}
+      {%- if pt_posts.size == 0 %}<p class="empty">Em breve, as primeiras notícias.</p>{% endif %}
+    </div>
+    <div class="posts" data-only="en">
+      {%- for post in en_posts %}{% include post-card.html post=post %}{% endfor %}
+      {%- if en_posts.size == 0 %}<p class="empty">First articles coming soon.</p>{% endif %}
+    </div>
+  </div>
+</section>

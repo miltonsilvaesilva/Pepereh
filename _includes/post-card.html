@@ -1,0 +1,5 @@
+<a class="post-card" href="{{ include.post.url | relative_url }}">
+  <span class="post-card__meta"><span class="tag">{{ include.post.category }}</span><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%d/%m/%Y" }}</time></span>
+  <h3>{{ include.post.title }}</h3>
+  <p>{{ include.post.summary }}</p>
+</a>

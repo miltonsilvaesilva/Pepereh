@@ -1,0 +1,24 @@
+<a class="skip" href="#main" data-i18n="skip">Saltar para o conteúdo</a>
+<header class="nav" id="top">
+  <div class="container nav__inner">
+    <a href="{{ '/' | relative_url }}" class="nav__brand" aria-label="PEPEREH — início">
+      <img src="{{ '/assets/logo-wordmark.svg' | relative_url }}" alt="PEPEREH" width="140" height="30">
+    </a>
+    <nav class="nav__links" id="menu" aria-label="Principal">
+      <a href="{{ '/#sobre' | relative_url }}" data-i18n="nav.about">Sobre</a>
+      <a href="{{ '/#servicos' | relative_url }}" data-i18n="nav.services">Serviços</a>
+      <a href="{{ '/#experiencia' | relative_url }}" data-i18n="nav.experience">Experiência</a>
+      <a href="{{ '/#negocios' | relative_url }}" data-i18n="nav.ventures">Nossos Negócios</a>
+      <a href="{{ '/noticias/' | relative_url }}" data-i18n="nav.news">Notícias</a>
+      <a href="{{ '/#contacto' | relative_url }}" class="btn btn--sm btn--primary" data-i18n="nav.contact">Pedir proposta</a>
+    </nav>
+    <div class="nav__tools">
+      <button class="lang" id="lang" type="button" aria-label="Mudar idioma / Change language">
+        <span data-lang="pt">PT</span><span class="lang__sep">|</span><span data-lang="en">EN</span>
+      </button>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

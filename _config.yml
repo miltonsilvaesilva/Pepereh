@@ -1,0 +1,30 @@
+title: PEPEREH
+tagline: Think Big
+description: >-
+  A PEPEREH é uma empresa angolana, sediada em Luanda, que combina tecnologia,
+  consultoria, comércio e desenvolvimento de negócios para criar soluções
+  práticas e orientadas para resultados.
+url: "https://pepereh.com"
+baseurl: ""
+lang: pt
+locale: pt_AO
+logo: /assets/icon.png
+timezone: Africa/Luanda
+
+permalink: /noticias/:title/
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+exclude:
+  - README.md
+  - .claude
+  - .pages.yml
+  - Gemfile
+  - Gemfile.lock
+  - vendor
