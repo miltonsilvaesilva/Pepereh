@@ -25,7 +25,7 @@ redes:
 agenda: ""
 
 # Código do GoatCounter (ex.: "pepereh" para pepereh.goatcounter.com)
-goatcounter: ""
+goatcounter: "pepereh"
 
 # Envio automático dos formulários (FormSubmit, gratuito)
 formulario: "https://formsubmit.co/ajax/geral@pepereh.com"
