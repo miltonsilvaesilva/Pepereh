@@ -4,8 +4,12 @@ description: >-
   A PEPEREH é uma empresa angolana, sediada em Luanda, que combina tecnologia,
   consultoria, comércio e desenvolvimento de negócios para criar soluções
   práticas e orientadas para resultados.
-url: "https://pepereh.com"
-baseurl: ""
+# Enquanto o domínio pepereh.com não estiver ligado:
+url: "https://miltonsilvaesilva.github.io"
+baseurl: "/Pepereh"
+# Depois de ligar o domínio, trocar por:
+# url: "https://pepereh.com"
+# baseurl: ""
 lang: pt
 locale: pt_AO
 logo: /assets/icon.png
