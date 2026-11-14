@@ -2,7 +2,8 @@
 (function () {
   "use strict";
 
-  var CFG = window.PEPEREH || {};
+  var me = document.currentScript || document.querySelector("script[data-form]");
+  var CFG = (me && me.dataset) || {};
   var EMAIL = CFG.email || "geral@pepereh.com";
 
   /* ---------- Traduções (EN). O português está no próprio HTML. ---------- */
@@ -238,7 +239,7 @@
     if (persist !== false) store("pepereh-lang", current);
   }
 
-  var pageLang = window.PEPEREH_PAGE_LANG; // definido nas páginas de notícia
+  var pageLang = CFG.pageLang || ""; // definido nas páginas de notícia
   var saved = store("pepereh-lang");
   var initial = pageLang || saved || "pt"; // português por omissão
   var q = /[?&]lang=(pt|en)/.exec(location.search);
