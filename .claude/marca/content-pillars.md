@@ -1,5 +1,5 @@
 # Pilares de Conteúdo — PEPEREH
-<!-- version: 0.9 (proposta) · last updated: 2026-11-15 · baseado em brand-profile.md v1.0 -->
+<!-- version: 1.0 (aprovado) · last updated: 2026-11-15 · baseado em brand-profile.md v1.0 -->
 
 Os 5 temas fixos sobre os quais a PEPEREH publica. Cada publicação pertence a **um** pilar.
 Formatos (carrossel, reel, story, imagem) e intenções (ensinar, inspirar, vender) aplicam-se dentro de qualquer pilar.
