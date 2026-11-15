@@ -60,7 +60,7 @@
 
 ## Channels
 - **Active platforms:** Facebook, Instagram (@pepereh.ao). LinkedIn, TikTok, YouTube e X: a criar
-- **Posting cadence (if known):** a definir
+- **Posting cadence:** Instagram 3 publicações/semana + stories 3–5 dias/semana · Facebook as mesmas 3 publicações adaptadas · LinkedIn 2/semana (quando a página existir)
 - **Handles / links:** pepereh.com · instagram.com/pepereh.ao · facebook.com/profile.php?id=61596369639526 · WhatsApp +244 946 325 774
 - **Languages / markets:** português (principal); inglês para LinkedIn/parcerias internacionais
 
