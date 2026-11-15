@@ -1,5 +1,5 @@
 # Perfis optimizados — Instagram e Facebook
-**Estado: RASCUNHO — aguarda aprovação.**
+**Estado: APROVADO em 15/11/2026.**
 
 ## Instagram (@pepereh.ao)
 | Campo | Texto |
