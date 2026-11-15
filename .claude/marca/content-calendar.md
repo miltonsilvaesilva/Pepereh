@@ -1,5 +1,5 @@
 # Calendário de Conteúdos — PEPEREH
-<!-- version: 0.9 (proposta) · last updated: 2026-11-15 · lê: brand-profile.md v1.0, content-pillars.md v1.0 -->
+<!-- version: 1.0 (aprovado) · last updated: 2026-11-15 · lê: brand-profile.md v1.0, content-pillars.md v1.0 -->
 
 ## Cadência (aprovada)
 | Rede | Frequência | Notas |
