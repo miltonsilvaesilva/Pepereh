@@ -77,7 +77,11 @@
 - **Sensitivity:** projectos com o Estado — não divulgar detalhes sem autorização
 
 ## Show, don't tell — example posts
-- **Loves:** a recolher (referências de estilo: Apple, Google, Microsoft, Anthropic, X)
+- **Loves:** os 3 estilos visuais aprovados em 15/11/2026 (modelo em .claude/marca/modelos/estilos-capa.html), usados em alternância:
+  - **A · Minimalista claro** (fundo branco, título preto com destaque em gradiente) → conteúdo educativo, consultoria, dicas
+  - **B · Escuro tecnológico** (fundo #0B0B14 com brilhos ciano/violeta, como o site) → tecnologia, notícias, casos de estudo
+  - **C · Gradiente vibrante** (fundo no gradiente da marca, texto branco) → anúncios, lançamentos (KiPUPU), datas e CTAs
+  - Regra: nunca 3 publicações seguidas do mesmo estilo no feed. Referências gerais: Apple, Google, Microsoft, Anthropic, X.
 - **Hates:** a recolher
 
 ## Notes

@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:J;font-weight:800;src:url("../../../assets/fonts/plus-jakarta-sans-latin-800-normal.woff2")}
+@font-face{font-family:J;font-weight:600;src:url("../../../assets/fonts/plus-jakarta-sans-latin-600-normal.woff2")}
+@font-face{font-family:J;font-weight:500;src:url("../../../assets/fonts/plus-jakarta-sans-latin-500-normal.woff2")}
+body{margin:0;background:#e9e9ef;font-family:J;display:flex;gap:40px;padding:40px;width:max-content}
+.col{display:flex;flex-direction:column;align-items:center;gap:18px}
+.lab{font-weight:800;font-size:44px;color:#0b0b14}
+.post{width:1080px;height:1350px;position:relative;overflow:hidden;box-sizing:border-box;padding:110px 96px}
+.grad{background:linear-gradient(100deg,#2ed3f5,#5aa8ff 30%,#9b6bff 65%,#d63cff);-webkit-background-clip:text;color:transparent}
+.tag{font-weight:600;font-size:30px;letter-spacing:6px;text-transform:uppercase}
+h1{font-weight:800;font-size:104px;line-height:1.02;letter-spacing:-3px;margin:40px 0 0}
+.sub{font-weight:500;font-size:36px;line-height:1.4;margin-top:40px}
+.foot{position:absolute;left:96px;right:96px;bottom:90px;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:30px}
+.logo{height:56px}
+/* A — minimal claro */
+.a{background:#fff;color:#0b0b14}.a .sub{color:#555}.a .tag{color:#9b6bff}
+.a .num{position:absolute;right:80px;top:70px;font-weight:800;font-size:300px;opacity:.06}
+/* B — escuro tecnológico */
+.b{background:#0b0b14;color:#fff}.b .sub{color:rgba(255,255,255,.72)}
+.b .glow{position:absolute;width:1000px;height:1000px;right:-420px;top:-380px;border-radius:50%;background:radial-gradient(closest-side,rgba(46,211,245,.45),rgba(155,107,255,.35) 55%,transparent 75%)}
+.b .glow2{position:absolute;width:800px;height:800px;left:-380px;bottom:-420px;border-radius:50%;background:radial-gradient(closest-side,rgba(214,60,255,.35),transparent 70%)}
+.b .card{position:absolute;left:96px;right:96px;bottom:210px;padding:36px 40px;border-radius:32px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:32px;font-weight:500;color:rgba(255,255,255,.85)}
+/* C — gradiente vibrante */
+.c{background:linear-gradient(135deg,#2ed3f5 0%,#5aa8ff 30%,#9b6bff 65%,#d63cff 100%);color:#fff}
+.c .sub{color:rgba(255,255,255,.92)}
+.c .box{position:absolute;left:96px;bottom:210px;background:#fff;color:#0b0b14;border-radius:999px;padding:24px 44px;font-weight:800;font-size:34px}
+.c .p{position:absolute;right:-140px;top:300px;width:720px;opacity:.16}
+</style></head><body>
+<div class="col"><div class="lab">A · Minimalista claro</div><div class="post a"><div class="num">5</div>
+<div class="tag">Tecnologia</div><h1>5 sinais de que a sua empresa precisa de <span class="grad">integrar sistemas.</span></h1>
+<div class="sub">Se a equipa copia dados de um sistema para outro, este carrossel é para si.</div>
+<div class="foot"><img class="logo" src="../../../assets/logo-wordmark.svg"><span style="color:#9b6bff">Deslize →</span></div></div></div>
+
+<div class="col"><div class="lab">B · Escuro tecnológico</div><div class="post b"><div class="glow"></div><div class="glow2"></div>
+<div class="tag grad">Tecnologia</div><h1 style="position:relative">5 sinais de que a sua empresa precisa de <span class="grad">integrar sistemas.</span></h1>
+<div class="sub" style="position:relative">Se a equipa copia dados de um sistema para outro, este carrossel é para si.</div>
+<div class="card">01 · Os mesmos dados são introduzidos várias vezes</div>
+<div class="foot" style="position:absolute"><img class="logo" src="../../../assets/logo-white-360.png" style="height:52px"><span class="grad">Deslize →</span></div></div></div>
+
+<div class="col"><div class="lab">C · Gradiente vibrante</div><div class="post c"><img class="p" src="../../../assets/icon.png" style="filter:brightness(10)">
+<div class="tag">Tecnologia</div><h1 style="position:relative">5 sinais de que a sua empresa precisa de integrar sistemas.</h1>
+<div class="sub" style="position:relative">Se a equipa copia dados de um sistema para outro, este carrossel é para si.</div>
+<div class="box">Deslize para ver →</div>
+<div class="foot"><img class="logo" src="../../../assets/logo-white-360.png" style="height:52px"><span>think big.</span></div></div></div>
+</body></html>
