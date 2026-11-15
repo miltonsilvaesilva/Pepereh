@@ -1,5 +1,5 @@
 # Brand Profile — PEPEREH
-<!-- version: 0.9 (rascunho) · last updated: 2026-11-15 · review: trimestral ou em rebrand/novo serviço
+<!-- version: 1.0 (aprovado) · last updated: 2026-11-15 · review: trimestral ou em rebrand/novo serviço
      · type: services (B2B + B2G, com B2C secundário) -->
 
 ## Identity
@@ -75,6 +75,9 @@
 - **Compliance / legal:** Lei n.º 22/11 (dados pessoais) — nunca publicar dados de clientes; não nomear clientes sem autorização escrita
 - **Competitor rules:** nunca nomear nem comparar concorrentes
 - **Sensitivity:** projectos com o Estado — não divulgar detalhes sem autorização
+- **Prices:** nunca publicar preços nas redes — sempre «por proposta»
+- **Claims proibidas:** «garantido», «o melhor do mercado», «líder», «revolucionário», «disruptivo»
+- **Críticas/reclamações:** responder com calma e empatia, sem discutir em público; convidar para mensagem privada ou WhatsApp; nunca apagar críticas honestas (só spam/insultos)
 
 ## Show, don't tell — example posts
 - **Loves:** os 3 estilos visuais aprovados em 15/11/2026 (modelo em .claude/marca/modelos/estilos-capa.html), usados em alternância:
