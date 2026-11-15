@@ -1,5 +1,5 @@
 # Respostas-modelo — mensagens e comentários
-**Estado: RASCUNHO — aguarda aprovação.**
+**Estado: APROVADO em 15/11/2026.**
 
 Regras (do perfil da marca): tom formal mas próximo · sem preços públicos · nunca discutir em público · nunca nomear clientes · responder em até 24h úteis · assinar com «Equipa PEPEREH» nas mensagens privadas.
 Substituir o que está entre [parênteses rectos].

@@ -1,5 +1,5 @@
 # Publicações extra — apresentação e reserva
-**Estado: RASCUNHO — aguarda aprovação.** Nada é publicado sem autorização.
+**Estado: APROVADO em 15/11/2026.**
 
 ## 1. Publicação de apresentação (para FIXAR no topo do perfil)
 **Imagens:** `apresentacao-1.png` … `apresentacao-5.png` (estilos C → B → C)
