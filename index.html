@@ -20,7 +20,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
       </div>
       <div class="hero__art" aria-hidden="true">
         <div class="orb">
-          <img src="{{ '/assets/icon.png' | relative_url }}" alt="" width="220" height="218">
+          <img src="{{ '/assets/icon-288.webp' | relative_url }}" alt="" width="220" height="218" fetchpriority="high">
         </div>
         <p class="hero__tag">think big<span class="grad">.</span></p>
       </div>
@@ -283,6 +283,20 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
     </div>
   </section>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Trabalham fora de Luanda?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Actuamos em todo o território angolano e estamos abertos a projectos e parcerias internacionais."}},
+      {"@type": "Question", "name": "Quanto custa um site, uma aplicação ou um sistema?", "acceptedAnswer": {"@type": "Answer", "text": "Cada projecto é diferente. Preencha o formulário de pedido de proposta e a nossa equipa envia-lhe uma proposta com o valor, adaptada às suas necessidades."}},
+      {"@type": "Question", "name": "Quanto tempo demora um projecto?", "acceptedAnswer": {"@type": "Answer", "text": "Depende das necessidades de cada cliente. O prazo é definido em conjunto e fica indicado na proposta."}},
+      {"@type": "Question", "name": "Fazem manutenção depois da entrega?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Prestamos suporte e manutenção após a entrega, para garantir que a solução continua a funcionar e a evoluir."}},
+      {"@type": "Question", "name": "Vendem equipamentos a particulares?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Fornecemos equipamentos informáticos e tecnológicos a particulares e a empresas."}}
+    ]
+  }
+  </script>
+
   <!-- CONTACTO -->
   <section class="section section--dark" id="contacto">
     <div class="container contact">
@@ -294,7 +308,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
           {%- if c.whatsapp != "" %}
           <li>
             <span class="contact__label">WhatsApp</span>
-            <a href="https://wa.me/{{ c.whatsapp }}" target="_blank" rel="noopener" data-track="whatsapp">{{ c.whatsapp_texto }}</a>
+            <a href="https://wa.me/{{ c.whatsapp }}?text={{ c.whatsapp_mensagem | uri_escape }}" target="_blank" rel="noopener" data-track="whatsapp">{{ c.whatsapp_texto }}</a>
           </li>
           {%- endif %}
           <li>

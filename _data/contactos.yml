@@ -6,6 +6,8 @@ email: "geral@pepereh.com"
 # WhatsApp: só dígitos, com o indicativo (244...)
 whatsapp: "244946325774"
 whatsapp_texto: "+244 946 325 774"
+# Mensagem que já aparece escrita quando o visitante abre o WhatsApp
+whatsapp_mensagem: "Olá PEPEREH! Vi o vosso site e gostaria de pedir uma proposta."
 
 horario_pt: "Segunda a sexta, 10h–17h"
 horario_en: "Monday to Friday, 10am–5pm"

@@ -364,6 +364,8 @@ html[lang="pt"] [data-only="en"], html[lang="en"] [data-only="pt"] { display: no
 .newsletter .form__status { margin-top: 10px; font-size: .88rem; }
 .footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
 
+.notfound { min-height: 60vh; display: flex; align-items: center; }
+
 /* Responsive */
 @media (max-width: 1080px) {
   .who, .pillars { grid-template-columns: repeat(3, 1fr); }

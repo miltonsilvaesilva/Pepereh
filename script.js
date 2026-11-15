@@ -171,7 +171,10 @@
     "footer.tag": "Ideas that become reality.",
     "footer.rights": "All rights reserved.",
     "footer.privacy": "Privacy Policy",
-    "footer.terms": "Terms of Use"
+    "footer.terms": "Terms of Use",
+    "nf.title": "This page doesn't exist.",
+    "nf.lead": "The address may be wrong or the page may have moved. But your idea is still welcome.",
+    "nf.home": "Back to home"
   };
 
   var MSG = {
