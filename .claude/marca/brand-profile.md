@@ -65,7 +65,8 @@
 - **Languages / markets:** português (principal); inglês para LinkedIn/parcerias internacionais
 
 ## Operational defaults (tool skills read these)
-- **AI & synthetic media policy:** a definir (proposta: IA permitida para rascunhos, design e imagens ilustrativas; nunca rostos/vozes de pessoas reais sem consentimento; sem avatares a fingir ser funcionários; indicar «imagem ilustrativa» quando aplicável)
+- **AI & synthetic media policy:** IA permitida para rascunhos, design de carrosséis/stories e imagens ilustrativas. Proibido: rostos ou vozes de pessoas reais sem autorização escrita; avatares a fingir ser funcionários. Imagens geradas por IA que pareçam fotografias levam a indicação «imagem ilustrativa».
+- **Approval rule (obrigatória):** NADA é publicado sem autorização explícita do responsável da PEPEREH. Todo o conteúdo (texto, imagem, vídeo, resposta a comentários/mensagens) é apresentado primeiro como rascunho.
 - **Accessibility defaults:** texto alternativo em todas as imagens; legendas sempre activas nos vídeos; contraste alto
 - **Visual identity:** → logótipo em /assets (logo-wordmark.svg, logo-white.png, icon.png); cores: gradiente ciano #2ED3F5 → azul #5AA8FF → violeta #9B6BFF → magenta #D63CFF; preto #0B0B14; branco; tipo de letra Plus Jakarta Sans
 
