@@ -1,5 +1,5 @@
 # Semana 1 — 16 a 20 de Novembro de 2026
-**Estado: RASCUNHO — aguarda aprovação.** Nada é publicado sem autorização.
+**Estado: APROVADO em 15/11/2026** pelo responsável da PEPEREH (todas as publicações e stories).
 
 Hora sugerida para as publicações: **12h30** (hora de Luanda). Publicar no Instagram e no Facebook pelo **Meta Business Suite** (pode agendar tudo de uma vez).
 
