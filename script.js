@@ -438,6 +438,26 @@
     var ctx = cv && cv.getContext ? cv.getContext("2d") : null;
     var anchors = [], draw = 1, idleDraw = null, idleK = 0, ticking = false, idleTimer = null;
     var pose = { x: 0, y: 0, s: 42, mid: 0 }, energy = 0, lastY = window.scrollY, speed = 0, dpr = 1, running = false;
+    var traces = [], lastTrace = 0;
+    var drag = { on: false, x: 0, y: 0, ox: 0, oy: 0, k: 0, lx: 0, ly: 0 };
+
+    /* pistas de circuito: segmentos em ângulo recto a partir do «P» */
+    function spawnTrace(cx, cy, len, life) {
+      var dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]], d = dirs[(Math.random() * 4) | 0], x = cx, y = cy, pts = [[x, y]];
+      var segs = 2 + ((Math.random() * 3) | 0);
+      for (var g = 0; g < segs; g++) {
+        var L = len * (0.5 + Math.random());
+        x += d[0] * L; y += d[1] * L; pts.push([x, y]);
+        d = d[0] !== 0 ? [0, Math.random() < .5 ? 1 : -1] : [Math.random() < .5 ? 1 : -1, 0];
+      }
+      var cols = ["#2ed3f5", "#5aa8ff", "#9b6bff", "#d63cff"];
+      traces.push({ pts: pts, born: performance.now(), life: life || 1100, col: cols[(Math.random() * 4) | 0] });
+      kick();
+    }
+    function spawnBurst(n, len) {
+      var cx = pose.x + pose.s / 2, cy = pose.y + pose.s / 2;
+      for (var q = 0; q < n; q++) spawnTrace(cx, cy, len, 1300);
+    }
 
     /* pontos do «P» (caixa 0–100) */
     var N = window.innerWidth < 900 ? 140 : 220, parts = [];
@@ -488,7 +508,8 @@
         var dk = ease(idleK);
         px = lerp(px, dx, dk); ps = lerp(ps, ds, dk);
       }
-      var raw = Math.sin(Math.PI * t), mid = raw * (1 - idleK);
+      if (drag.k > 0) { var dk2 = drag.k; px = lerp(px, drag.x, dk2); py = lerp(py, drag.y, dk2); ps = lerp(ps, Math.max(ps, window.innerWidth < 900 ? 40 : 52), dk2); }
+      var raw = Math.sin(Math.PI * t), mid = raw * (1 - idleK) * (1 - drag.k);
       draw = idleDraw !== null ? idleDraw : 1 - 0.9 * raw;
       pose.x = px; pose.y = py; pose.s = ps; pose.mid = mid;
       // o emblema desvanece enquanto viaja em partículas
@@ -532,14 +553,47 @@
         var z = Math.max(1.4, sc * 6 * p.sz);
         ctx.fillStyle = p.col; ctx.fillRect(p.x - z / 2, p.y - z / 2, z, z);
       }
+      // ligações de circuito entre partículas (em ângulo recto)
+      if (energy > 0.2) {
+        ctx.lineWidth = 1; ctx.globalAlpha = Math.min(0.5, energy * 0.45);
+        for (var c = 0; c < parts.length; c += 7) {
+          var A = parts[c], B = parts[(c + 5) % parts.length];
+          if (Math.abs(A.x - B.x) + Math.abs(A.y - B.y) > pose.s * 1.6) continue;
+          ctx.strokeStyle = A.col; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+          ctx.fillStyle = A.col; ctx.fillRect(B.x - 1.5, A.y - 1.5, 3, 3);
+        }
+      }
+      // pistas que crescem e se apagam
+      if (energy > 0.3 && now - lastTrace > 140) { lastTrace = now; spawnTrace(pose.x + pose.s / 2, pose.y + pose.s / 2, pose.s * 0.5, 800); }
+      for (var m = traces.length - 1; m >= 0; m--) {
+        var tr = traces[m], age = now - tr.born;
+        if (age > tr.life) { traces.splice(m, 1); continue; }
+        var grow = Math.min(1, age / (tr.life * 0.45)), fade = 1 - Math.max(0, (age - tr.life * 0.55) / (tr.life * 0.45));
+        var total = 0, segL = [];
+        for (var g2 = 1; g2 < tr.pts.length; g2++) { var l = Math.abs(tr.pts[g2][0] - tr.pts[g2 - 1][0]) + Math.abs(tr.pts[g2][1] - tr.pts[g2 - 1][1]); segL.push(l); total += l; }
+        var left = total * grow;
+        ctx.globalAlpha = fade * 0.9; ctx.strokeStyle = tr.col; ctx.fillStyle = tr.col; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(tr.pts[0][0], tr.pts[0][1]);
+        var ex = tr.pts[0][0], ey = tr.pts[0][1];
+        for (var g3 = 1; g3 < tr.pts.length && left > 0; g3++) {
+          var f = Math.min(1, left / segL[g3 - 1]);
+          ex = tr.pts[g3 - 1][0] + (tr.pts[g3][0] - tr.pts[g3 - 1][0]) * f;
+          ey = tr.pts[g3 - 1][1] + (tr.pts[g3][1] - tr.pts[g3 - 1][1]) * f;
+          ctx.lineTo(ex, ey); left -= segL[g3 - 1];
+          if (f === 1) { ctx.fillRect(tr.pts[g3][0] - 2, tr.pts[g3][1] - 2, 4, 4); }
+        }
+        ctx.stroke();
+        if (grow === 1) { ctx.beginPath(); ctx.arc(ex, ey, 3.2, 0, 6.283); ctx.stroke(); ctx.beginPath(); ctx.arc(ex, ey, 1.2, 0, 6.283); ctx.fill(); }
+      }
       ctx.globalAlpha = 1;
-      if (settled && energy < 0.01) { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); return; }
+      if (settled && energy < 0.01 && !traces.length && !drag.on) { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); return; }
       requestAnimationFrame(render);
     }
 
     function lockOn() {
       if (!lock) return;
       lock.classList.remove("is-on"); void lock.offsetWidth; lock.classList.add("is-on");
+      spawnBurst(5, pose.s * 0.55);
     }
     function onScroll() {
       var y = window.scrollY; speed += Math.abs(y - lastY); lastY = y;
@@ -558,6 +612,39 @@
       }, 140);
       request();
     }
+    /* arrastar o «P» com o rato ou o dedo */
+    function pt(e) { var q = e.touches ? e.touches[0] : e; return { x: q.clientX, y: q.clientY }; }
+    function dragStart(e) {
+      var q = pt(e);
+      drag.on = true; drag.k = 1; drag.ox = q.x - pose.x; drag.oy = q.y - pose.y;
+      drag.x = pose.x; drag.y = pose.y; drag.lx = q.x; drag.ly = q.y;
+      trav.classList.add("is-drag"); e.preventDefault(); kick(); request();
+    }
+    function dragMove(e) {
+      if (!drag.on) return;
+      var q = pt(e);
+      speed += Math.abs(q.x - drag.lx) + Math.abs(q.y - drag.ly); drag.lx = q.x; drag.ly = q.y;
+      drag.x = q.x - drag.ox; drag.y = q.y - drag.oy;
+      e.preventDefault(); kick(); request();
+    }
+    function dragEnd() {
+      if (!drag.on) return;
+      drag.on = false; trav.classList.remove("is-drag");
+      var t0 = performance.now();
+      (function back(now) { // volta ao seu lugar
+        var k = Math.min(1, (now - t0) / 700);
+        drag.k = 1 - ease(k); speed += 6; frame();
+        if (k < 1) requestAnimationFrame(back); else lockOn();
+      })(t0);
+    }
+    trav.addEventListener("mousedown", dragStart);
+    trav.addEventListener("touchstart", dragStart, { passive: false });
+    window.addEventListener("mousemove", dragMove);
+    window.addEventListener("touchmove", dragMove, { passive: false });
+    window.addEventListener("mouseup", dragEnd);
+    window.addEventListener("touchend", dragEnd);
+    window.addEventListener("touchcancel", dragEnd);
+
     function init() { measure(); document.documentElement.classList.add("has-p-trav"); request(); }
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", function () { measure(); request(); });
