@@ -425,6 +425,98 @@
     secs.forEach(function (sec) { spy.observe(sec); });
   }
 
+
+  /* ---------- «P» que viaja pelas secções ---------- */
+  (function () {
+    var trav = document.getElementById("p-trav");
+    var heroImg = document.querySelector(".hero .orb img");
+    if (!trav || !heroImg || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var path = trav.querySelector(".p-trav__p");
+    var bg = trav.querySelector(".p-trav__bg");
+    var anchors = [], draw = 1, idleDraw = null, idleK = 0, ticking = false, idleTimer = null;
+
+    function box(el) { // posição real, sem transformações das animações
+      var x = 0, y = 0, n = el;
+      while (n) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+      return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight };
+    }
+    function measure() {
+      var vh = window.innerHeight, small = window.innerWidth < 900;
+      var size = small ? 30 : 42, lineY = Math.round(vh * (small ? 0.24 : 0.28));
+      anchors = [];
+      document.querySelectorAll("main section[id]").forEach(function (sec) {
+        var eb = sec.querySelector(".eyebrow") || sec.querySelector("h2");
+        if (!eb || !eb.offsetParent) return;
+        var col = box(eb.parentElement), r = box(eb);
+        anchors.push({
+          scroll: Math.max(0, r.y + r.h / 2 - lineY),
+          x: Math.min(col.x + col.w, window.innerWidth - 16) - size,
+          y: lineY - size / 2,
+          size: size
+        });
+      });
+      anchors.sort(function (a, b) { return a.scroll - b.scroll; });
+    }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+    function heroPose() {
+      var r = heroImg.getBoundingClientRect();
+      return { x: r.left, y: r.top, size: r.width, scroll: 0 };
+    }
+    function frame() {
+      ticking = false;
+      if (!anchors.length) return;
+      var y = window.scrollY, hero = heroPose();
+      var list = [{ x: hero.x, y: hero.y + y, size: hero.size, scroll: 0, hero: true }].concat(anchors);
+      var i = 0;
+      while (i < list.length - 1 && y >= list[i + 1].scroll) i++;
+      var a = list[i], b = list[Math.min(i + 1, list.length - 1)];
+      var t = b === a ? 0 : Math.min(1, Math.max(0, (y - a.scroll) / (b.scroll - a.scroll)));
+      var e = ease(t);
+      var ay = a.hero ? a.y - y : a.y;
+      var px = lerp(a.x, b.x, e), py = lerp(ay, b.y, e), ps = lerp(a.size, b.size, e);
+      // depois da última secção, acompanha o título dela
+      if (i === list.length - 1 && !a.hero) { py = a.y - (y - a.scroll); }
+      var mid = Math.sin(Math.PI * t) * (1 - idleK);
+      var target = 1 - 0.85 * Math.sin(Math.PI * t);
+      draw = idleDraw !== null ? idleDraw : target;
+      trav.style.transform = "translate3d(" + px.toFixed(1) + "px," + py.toFixed(1) + "px,0) rotate(" + (-14 * mid).toFixed(2) + "deg)";
+      trav.style.width = trav.style.height = ps.toFixed(1) + "px";
+      bg.setAttribute("rx", (24 + 26 * mid).toFixed(1));
+      path.style.strokeDashoffset = (1 - draw).toFixed(3);
+      trav.classList.toggle("is-moving", mid > 0.05);
+    }
+    function request() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    function onScroll() {
+      idleDraw = null; idleK = 0;
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () {
+        // parou: o P completa-se
+        var start = draw, t0 = performance.now();
+        (function step(now) {
+          var k = Math.min(1, (now - t0) / 380);
+          idleDraw = start + (1 - start) * ease(k); idleK = ease(k);
+          frame();
+          if (k < 1) requestAnimationFrame(step);
+        })(t0);
+      }, 160);
+      request();
+    }
+    function init() {
+      measure();
+      document.documentElement.classList.add("has-p-trav");
+      request();
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () { measure(); request(); });
+    window.addEventListener("load", function () { measure(); request(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); request(); });
+    document.addEventListener("toggle", function () { setTimeout(function () { measure(); request(); }, 50); }, true);
+    init();
+    // o P do topo flutua: actualizar enquanto o topo estiver visível
+    (function float() { if (window.scrollY < window.innerHeight) request(); requestAnimationFrame(float); })();
+  })();
+
   /* ---------- Animação ao aparecer ---------- */
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var targets = document.querySelectorAll(".head, .card, .who__item, .pillars li, .chips, .mv__box, .values > div, .venture, .stat, .split > *, .contact > *, .post-card");

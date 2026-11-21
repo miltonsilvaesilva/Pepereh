@@ -434,6 +434,15 @@ details[open] > summary .fold-ico::after { opacity: 0; }
   .nav__links { max-height: calc(100vh - 72px); overflow-y: auto; }
 }
 
+/* «P» que viaja */
+.p-trav { position: fixed; left: 0; top: 0; z-index: 45; width: 42px; height: 42px; pointer-events: none; opacity: 0; will-change: transform; filter: drop-shadow(0 10px 22px rgba(155,107,255,.35)); }
+.has-p-trav .p-trav { opacity: 1; }
+.has-p-trav .hero .orb img { opacity: 0; }
+.p-trav svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.p-trav__p { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.p-trav.is-moving { filter: drop-shadow(0 14px 30px rgba(46,211,245,.45)); }
+@media (prefers-reduced-motion: reduce) { .p-trav { display: none; } .has-p-trav .hero .orb img { opacity: 1; } }
+
 /* Responsive */
 @media (max-width: 1080px) {
   .who, .pillars { grid-template-columns: repeat(3, 1fr); }
