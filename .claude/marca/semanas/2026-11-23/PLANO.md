@@ -1,5 +1,5 @@
 # Semana 2 — 23 a 27 de Novembro de 2026
-**Estado: RASCUNHO — aguarda aprovação.** Nada é publicado sem autorização.
+**Estado: APROVADO em 21/11/2026** pelo responsável da PEPEREH (todas as publicações e stories).
 
 Posição no calendário: **4.ª semana do mês** → P1 reel · P4 carrossel com CTA · P5 imagem (espaço reactivo).
 Hora sugerida: **12h30** (Luanda). Agendar no **Meta Business Suite** (Instagram + Facebook).
