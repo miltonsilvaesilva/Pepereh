@@ -90,5 +90,5 @@
 
 ## Notes
 - Clientes chegam sobretudo por boca a boca — as redes servem para confirmar credibilidade e facilitar o contacto.
-- KiPUPU (plataforma digital de serviços automóveis) — «Brevemente».
+- Negócios próprios (todos «Brevemente», ver _data/negocios.yml): **KiPUPU** — a plataforma que lava o seu carro; **iCont** — contabilidade e gestão da empresa resolvidas num só lugar (logótipo: «i» de moedas com Kz); **VaiBem** — aplicação de mobilidade urbana que ajuda a população a mover-se com propósito e prosperidade.
 - Notícias semanais do site (skill noticias-pepereh) podem ser reaproveitadas para as redes.

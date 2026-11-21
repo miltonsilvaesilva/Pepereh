@@ -249,15 +249,17 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
         <p class="lead" data-i18n="ventures.lead">Mais do que servir clientes, criamos os nossos próprios negócios — novos modelos pensados para o mercado angolano.</p>
       </div>
       <div class="ventures">
+        {%- for n in site.data.negocios %}
         <article class="venture">
-          <span class="badge" data-i18n="ventures.soon">Brevemente</span>
-          <h3>KiPUPU</h3>
-          <p data-i18n="ventures.kipupu">Plataforma digital de serviços automóveis — a nossa aposta na criação de novos modelos de negócio.</p>
+          {%- if n.estado == "brevemente" %}<span class="badge venture__badge" data-i18n="ventures.soon">Brevemente</span>{% endif %}
+          <div class="venture__logo"><picture><source srcset="{{ n.logo | append: '.webp' | relative_url }}" type="image/webp"><img src="{{ n.logo | append: '.png' | relative_url }}" alt="{{ n.nome }}" decoding="async"></picture></div>
+          <div class="venture__meta">
+            <span class="venture__cat"><span data-only="pt">{{ n.categoria.pt }}</span><span data-only="en">{{ n.categoria.en }}</span></span>
+          </div>
+          <p><span data-only="pt">{{ n.texto.pt }}</span><span data-only="en">{{ n.texto.en }}</span></p>
+          {%- if n.link != "" %}<a class="venture__link" href="{{ n.link }}" target="_blank" rel="noopener">{{ n.link | remove: "https://" }} →</a>{% endif %}
         </article>
-        <article class="venture venture--empty">
-          <h3 data-i18n="ventures.next.t">Próximos projectos</h3>
-          <p data-i18n="ventures.next.p">Novas marcas e plataformas em desenvolvimento.</p>
-        </article>
+        {%- endfor %}
       </div>
     </div>
   </section>

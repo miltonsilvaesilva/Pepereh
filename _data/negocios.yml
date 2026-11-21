@@ -1,0 +1,20 @@
+# Negócios próprios da PEPEREH (secção «Nossos Negócios»).
+# estado: brevemente | activo   ·   link: deixar vazio enquanto não houver site
+- nome: KiPUPU
+  logo: /assets/negocios/kipupu
+  estado: brevemente
+  link: ""
+  categoria: { pt: "Serviços automóveis", en: "Car services" }
+  texto: { pt: "A plataforma que lava o seu carro.", en: "The platform that washes your car." }
+- nome: iCont
+  logo: /assets/negocios/icont
+  estado: brevemente
+  link: ""
+  categoria: { pt: "Contabilidade e gestão", en: "Accounting and management" }
+  texto: { pt: "A contabilidade e a gestão da sua empresa, resolvidas num só lugar.", en: "Your company's accounting and management, sorted in one place." }
+- nome: VaiBem
+  logo: /assets/negocios/vaibem
+  estado: brevemente
+  link: ""
+  categoria: { pt: "Mobilidade urbana", en: "Urban mobility" }
+  texto: { pt: "A aplicação de mobilidade urbana que ajuda a população a mover-se com propósito e prosperidade.", en: "The urban mobility app that helps people move with purpose and prosperity." }
