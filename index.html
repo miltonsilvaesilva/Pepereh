@@ -116,6 +116,40 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
           <a href="#contacto" class="btn btn--light" data-i18n="sc.b">Pedir proposta</a>
         </article>
       </div>
+
+      <div class="catalog" id="solucoes">
+        <div class="head head--sm">
+          <p class="eyebrow" data-i18n="cat.eyebrow">Soluções tecnológicas</p>
+          <h3 class="catalog__title" data-i18n="cat.title">Em detalhe: o que entregamos.</h3>
+        </div>
+        <div class="catalog__grid">
+        {%- for m in site.data.solucoes %}
+          <article class="mod{% if m.grupos %} mod--wide{% endif %}" id="sol-{{ m.id }}">
+            <div class="mod__head">
+              <span class="mod__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <h4><span data-only="pt">{{ m.titulo.pt }}</span><span data-only="en">{{ m.titulo.en }}</span></h4>
+              <p><span data-only="pt">{{ m.sub.pt }}</span><span data-only="en">{{ m.sub.en }}</span></p>
+            </div>
+            {%- if m.grupos %}
+            <div class="mod__groups">
+              {%- for g in m.grupos %}
+              <div class="mod__group">
+                <h5><span data-only="pt">{{ g.nome.pt }}</span><span data-only="en">{{ g.nome.en }}</span></h5>
+                <ul>{% for i in g.itens %}<li><span data-only="pt">{{ i.pt }}</span><span data-only="en">{{ i.en }}</span></li>{% endfor %}</ul>
+              </div>
+              {%- endfor %}
+            </div>
+            {%- else %}
+            <ul>{% for i in m.itens %}<li><span data-only="pt">{{ i.pt }}</span><span data-only="en">{{ i.en }}</span></li>{% endfor %}</ul>
+            {%- endif %}
+          </article>
+        {%- endfor %}
+        </div>
+        <div class="catalog__cta">
+          <p data-i18n="cat.cta">Não encontra o que procura? Conte-nos o seu desafio.</p>
+          <a href="#contacto" class="btn btn--primary" data-i18n="nav.contact">Pedir proposta</a>
+        </div>
+      </div>
     </div>
   </section>
 

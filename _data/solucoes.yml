@@ -1,0 +1,126 @@
+# Catálogo detalhado de soluções tecnológicas (secção Serviços do site).
+# Cada módulo tem título, subtítulo e uma lista simples (itens) ou grupos com itens.
+# Só incluir serviços que a PEPEREH presta efectivamente.
+
+- id: software
+  titulo: { pt: "Software à medida", en: "Custom software" }
+  sub: { pt: "Sistemas que automatizam e simplificam a operação.", en: "Systems that automate and simplify operations." }
+  itens:
+    - { pt: "ERP, CRM e BPM", en: "ERP, CRM and BPM" }
+    - { pt: "Portais web e Janelas Únicas", en: "Web portals and Single Windows" }
+    - { pt: "Aplicações móveis", en: "Mobile apps" }
+    - { pt: "Workflows e automação", en: "Workflows and automation" }
+    - { pt: "Interoperabilidade de sistemas", en: "Systems interoperability" }
+    - { pt: "Integração de pagamentos (Multicaixa Express)", en: "Payment integration (Multicaixa Express)" }
+
+- id: cloud
+  titulo: { pt: "Cloud", en: "Cloud" }
+  sub: { pt: "Infra-estrutura escalável e segura nas principais plataformas.", en: "Scalable, secure infrastructure on the leading platforms." }
+  itens:
+    - { pt: "Microsoft Azure", en: "Microsoft Azure" }
+    - { pt: "Amazon Web Services", en: "Amazon Web Services" }
+    - { pt: "Cloud privada", en: "Private cloud" }
+    - { pt: "Backup e recuperação de desastres", en: "Backup and disaster recovery" }
+    - { pt: "Migração e gestão de workloads", en: "Workload migration and management" }
+
+- id: dados
+  titulo: { pt: "Dados e decisão", en: "Data and decisions" }
+  sub: { pt: "Transformar dados em conhecimento accionável.", en: "Turning data into actionable insight." }
+  itens:
+    - { pt: "Business Intelligence", en: "Business Intelligence" }
+    - { pt: "Data analytics", en: "Data analytics" }
+    - { pt: "Machine learning", en: "Machine learning" }
+    - { pt: "Visualização de dados", en: "Data visualisation" }
+
+- id: infra
+  titulo: { pt: "Infra-estruturas", en: "Infrastructure" }
+  sub: { pt: "A base sólida para operações críticas.", en: "A solid foundation for critical operations." }
+  grupos:
+    - nome: { pt: "Redes estruturadas", en: "Structured networks" }
+      itens:
+        - { pt: "Cablagem estruturada", en: "Structured cabling" }
+        - { pt: "Racks e organização", en: "Racks and cable management" }
+        - { pt: "Switching e routing", en: "Switching and routing" }
+    - nome: { pt: "Energia socorrida", en: "Backup power" }
+      itens:
+        - { pt: "Sistemas UPS", en: "UPS systems" }
+        - { pt: "Geradores automáticos", en: "Automatic generators" }
+        - { pt: "Energias renováveis", en: "Renewable energy" }
+        - { pt: "Quadros de comutação", en: "Transfer switchboards" }
+    - nome: { pt: "Datacenters", en: "Data centres" }
+      itens:
+        - { pt: "Micro datacenters", en: "Micro data centres" }
+        - { pt: "Ambientes escaláveis", en: "Scalable environments" }
+        - { pt: "Controlo ambiental", en: "Environmental control" }
+        - { pt: "Segurança e redundância", en: "Security and redundancy" }
+
+- id: seguranca
+  titulo: { pt: "Segurança e mobilidade", en: "Security and mobility" }
+  sub: { pt: "Protecção para pessoas, dados e activos, com acesso de qualquer lugar.", en: "Protection for people, data and assets, with access from anywhere." }
+  grupos:
+    - nome: { pt: "Videovigilância e controlo de acessos", en: "Video surveillance and access control" }
+      itens:
+        - { pt: "Sistemas IP de alta resolução", en: "High-resolution IP systems" }
+        - { pt: "Reconhecimento facial", en: "Facial recognition" }
+        - { pt: "Biometria", en: "Biometrics" }
+        - { pt: "Integração com alarmes", en: "Alarm integration" }
+        - { pt: "Integração IoT", en: "IoT integration" }
+    - nome: { pt: "Centrais de alarme", en: "Alarm systems" }
+      itens:
+        - { pt: "Sensores de intrusão", en: "Intrusion sensors" }
+        - { pt: "Controlo remoto", en: "Remote control" }
+        - { pt: "Resposta automatizada", en: "Automated response" }
+        - { pt: "Monitorização 24/7", en: "24/7 monitoring" }
+    - nome: { pt: "Mobilidade segura", en: "Secure mobility" }
+      itens:
+        - { pt: "Gestão de dispositivos (MDM)", en: "Mobile device management (MDM)" }
+        - { pt: "VPN corporativa", en: "Corporate VPN" }
+        - { pt: "Acesso remoto seguro", en: "Secure remote access" }
+        - { pt: "Protecção de endpoints", en: "Endpoint protection" }
+
+- id: consultoria-ti
+  titulo: { pt: "Consultoria técnica e outsourcing", en: "Technical consulting and outsourcing" }
+  sub: { pt: "Conhecimento técnico para decidir bem e operar melhor.", en: "Technical expertise to decide well and operate better." }
+  grupos:
+    - nome: { pt: "Consultoria técnica e funcional", en: "Technical and functional consulting" }
+      itens:
+        - { pt: "Avaliação de requisitos", en: "Requirements assessment" }
+        - { pt: "Arquitectura de sistemas", en: "Systems architecture" }
+        - { pt: "Roadmap tecnológico", en: "Technology roadmap" }
+    - nome: { pt: "Integração e migrações", en: "Integration and migrations" }
+      itens:
+        - { pt: "Microsoft e Microsoft 365", en: "Microsoft and Microsoft 365" }
+        - { pt: "Linux", en: "Linux" }
+        - { pt: "VMware", en: "VMware" }
+        - { pt: "SharePoint", en: "SharePoint" }
+        - { pt: "Azure", en: "Azure" }
+    - nome: { pt: "Outsourcing de TI", en: "IT outsourcing" }
+      itens:
+        - { pt: "Suporte técnico", en: "Technical support" }
+        - { pt: "Operação", en: "Operations" }
+        - { pt: "Manutenção preventiva e correctiva", en: "Preventive and corrective maintenance" }
+
+- id: fornecimento
+  titulo: { pt: "Fornecimento", en: "Supply" }
+  sub: { pt: "Equipamentos e licenças das principais marcas, com suporte especializado.", en: "Equipment and licences from leading brands, with specialist support." }
+  grupos:
+    - nome: { pt: "Hardware", en: "Hardware" }
+      itens:
+        - { pt: "Servidores rack e torre", en: "Rack and tower servers" }
+        - { pt: "Armazenamento NAS/SAN", en: "NAS/SAN storage" }
+        - { pt: "Equipamento de rede", en: "Networking equipment" }
+        - { pt: "Postos de trabalho", en: "Workstations" }
+    - nome: { pt: "Software e licenças", en: "Software and licences" }
+      itens:
+        - { pt: "Microsoft", en: "Microsoft" }
+        - { pt: "Veeam", en: "Veeam" }
+        - { pt: "Fortinet", en: "Fortinet" }
+        - { pt: "Adobe", en: "Adobe" }
+        - { pt: "Outros fabricantes", en: "Other vendors" }
+    - nome: { pt: "Segurança", en: "Security" }
+      itens:
+        - { pt: "Appliances UTM", en: "UTM appliances" }
+        - { pt: "Antivírus empresarial", en: "Business antivirus" }
+        - { pt: "Firewalls de nova geração", en: "Next-generation firewalls" }
+        - { pt: "Protecção contra ransomware", en: "Ransomware protection" }
+        - { pt: "Gestão de identidade", en: "Identity management" }
