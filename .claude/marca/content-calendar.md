@@ -6,7 +6,6 @@
 |---|---|---|
 | Instagram | **4 publicações/semana** (seg, qua, **qui**, sex) — **2 reels/semana** + stories **todos os dias úteis** | rede principal |
 | Facebook | as mesmas 4 publicações, adaptadas | mesmo dia, legenda ajustada |
-| WhatsApp Business | **Estados diários** (partilha da publicação/story do dia) + **Canal PEPEREH** (1–2 mensagens/semana) | maior alcance em Angola; o Canal tem de ser criado na app |
 | LinkedIn (quando existir) | 2/semana (ter, qui) | reaproveitamento das publicações dos pilares 1 e 2 |
 | Site (Notícias) | domingo — rascunhos às 11:44 | skill noticias-pepereh |
 
@@ -43,13 +42,11 @@ Estilos A/B/C nunca 3 seguidos iguais.
 | Sexta | partilha da publicação + CTA WhatsApp / «Pedir proposta» |
 | Sábado (opcional) | frase da marca / valor da semana ou partilha da notícia do site |
 
-## WhatsApp (Estados + Canal)
-- **Estados do WhatsApp Business:** todos os dias úteis, publicar a mesma imagem/vídeo do dia (ou o story) com uma frase curta e o link pepereh.com.
-- **Canal do WhatsApp «PEPEREH»:** 1–2 mensagens por semana — a notícia de domingo (com link) e o destaque da semana. Convidar contactos e clientes a seguir o canal.
-- Os textos para o Estado e para o Canal vêm no PLANO.md de cada semana.
+## WhatsApp — EM PAUSA (decisão de 21/11/2026)
+- Estados e Canal do WhatsApp **não** fazem parte do plano por agora. Não preparar textos para WhatsApp até nova indicação.
 
 ## Partilha pelos sócios (kit semanal)
-- No PLANO.md de cada semana: 2 textos curtos (1 para WhatsApp pessoal, 1 para LinkedIn pessoal) para os sócios partilharem a publicação principal da semana, na primeira pessoa e sem exageros.
+- No PLANO.md de cada semana: 1 texto curto para os sócios partilharem a publicação principal da semana no **LinkedIn pessoal** (e no Facebook pessoal, se quiserem), na primeira pessoa e sem exageros. Sem WhatsApp por agora.
 
 ## Rotina de interacção (15 min por dia útil)
 1. Responder a todos os comentários e mensagens (usar RESPOSTAS-MODELO.md).
