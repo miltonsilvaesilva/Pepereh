@@ -85,3 +85,22 @@ Hora sugerida: **12h30** (Luanda). Agendar no **Meta Business Suite** (Instagram
 - [ ] Nenhum cliente nomeado, nenhum preço
 - [ ] Texto alternativo em cada publicação
 - [ ] Legendas automáticas activadas no reel
+
+---
+
+## EXTRA — Quinta, 26/11 — Reel «Em 30 segundos: Site, Instagram ou WhatsApp Business?» (pilar 4 · estilo C)
+**Estado deste item: RASCUNHO — aguarda aprovação.**
+**Vídeo:** `qui26-reel.mp4` (18 s, 9:16) · capa: `qui26-reel-cena-1.png` · reaproveita o carrossel de quarta.
+**Som:** faixa instrumental animada da biblioteca do Instagram/Facebook.
+
+**Legenda Instagram:**
+> Site, Instagram ou WhatsApp Business? Em 30 segundos, por onde começar. 🎯
+>
+> Ontem explicámos em detalhe no carrossel — hoje, a versão rápida.
+>
+> Precisa de ajuda com a presença online da sua empresa? Peça uma proposta — link na bio.
+>
+> #PEPEREH #MarketingDigital #PequenasEmpresas #Angola #Luanda
+
+**Legenda Facebook:** igual, trocando «link na bio» por «pepereh.com».
+**Texto alternativo / descrição:** Vídeo com fundo em gradiente que resume quando começar pelo WhatsApp Business, pelo Instagram ou por um site.
