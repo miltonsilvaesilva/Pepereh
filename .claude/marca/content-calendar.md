@@ -1,26 +1,29 @@
 # Calendário de Conteúdos — PEPEREH
-<!-- version: 1.0 (aprovado) · last updated: 2026-11-15 · lê: brand-profile.md v1.0, content-pillars.md v1.0 -->
+<!-- version: 2.0 (aprovado em 21/11/2026 — mais volume a partir da semana de 30/11) · last updated: 2026-11-21 · lê: brand-profile.md v1.0, content-pillars.md v1.0 -->
 
 ## Cadência (aprovada)
 | Rede | Frequência | Notas |
 |---|---|---|
-| Instagram | 3 publicações/semana (seg, qua, sex) + stories 3–5 dias | rede principal |
-| Facebook | as mesmas 3 publicações, adaptadas | mesmo dia, legenda ajustada |
+| Instagram | **4 publicações/semana** (seg, qua, **qui**, sex) — **2 reels/semana** + stories **todos os dias úteis** | rede principal |
+| Facebook | as mesmas 4 publicações, adaptadas | mesmo dia, legenda ajustada |
+| WhatsApp Business | **Estados diários** (partilha da publicação/story do dia) + **Canal PEPEREH** (1–2 mensagens/semana) | maior alcance em Angola; o Canal tem de ser criado na app |
 | LinkedIn (quando existir) | 2/semana (ter, qui) | reaproveitamento das publicações dos pilares 1 e 2 |
 | Site (Notícias) | domingo — rascunhos às 11:44 | skill noticias-pepereh |
 
 **Horas de partida (a confirmar com as estatísticas nativas do Instagram/Facebook após 4–6 semanas):** 12h30 ou 19h00 (hora de Luanda).
-**Mínimo em semana difícil:** 2 publicações + 2 stories (usar a reserva).
+**Mínimo em semana difícil:** 3 publicações + 3 stories (usar a reserva).
 
 ## Esqueleto de 4 semanas (repete todos os meses)
-| Semana | Segunda | Quarta | Sexta |
-|---|---|---|---|
-| 1 | P2 Angola digital · carrossel · B — **Segunda Digital** | P3 Gestão que funciona · carrossel · A | P1 Do problema à execução · reel · B |
-| 2 | P2 Angola digital · carrossel · B — **Segunda Digital** | P4 Tecnologia certa · reel ou imagem · A | P5 Think big · imagem · C |
-| 3 | P2 Angola digital · carrossel · B — **Segunda Digital** *(ou espaço reactivo)* | P3 Gestão que funciona · carrossel · A | P1 · carrossel · B — **Caso PEPEREH** |
-| 4 | P1 Do problema à execução · reel/checklist · B | P4 Tecnologia certa · carrossel · C (com CTA «Pedir proposta») | P5 Think big · imagem · C *(ou espaço reactivo)* |
+| Semana | Segunda | Quarta | **Quinta — Reel «Em 30 segundos»** | Sexta |
+|---|---|---|---|---|
+| 1 | P2 Angola digital · carrossel · B — **Segunda Digital** | P3 Gestão que funciona · carrossel · A | reel do carrossel de quarta (P3) · A/B | P1 Do problema à execução · reel · B |
+| 2 | P2 Angola digital · carrossel · B — **Segunda Digital** | P4 Tecnologia certa · reel ou imagem · A | reel da Segunda Digital (P2) · B | P5 Think big · imagem · C |
+| 3 | P2 Angola digital · carrossel · B — **Segunda Digital** *(ou espaço reactivo)* | P3 Gestão que funciona · carrossel · A | reel do carrossel de quarta (P3) · A/B | P1 · carrossel · B — **Caso PEPEREH** |
+| 4 | P1 Do problema à execução · reel/checklist · B | P4 Tecnologia certa · carrossel · C (com CTA «Pedir proposta») | reel do carrossel de quarta (P4) · C | P5 Think big · imagem · C *(ou espaço reactivo)* |
 
-Contagem mensal (12): P1 ×3 · P2 ×3 · P3 ×2 · P4 ×2 · P5 ×2 · comercial directo ≤ 2 (≤ 20%).
+**Reel de quinta «Em 30 segundos»:** transforma o carrossel da semana em vídeo curto (cenas com texto animado, 15–25 s). Reaproveita os textos aprovados — nada de temas novos. Garante 2 reels/semana (quinta + o reel do esqueleto ou, na falta dele, a sexta).
+
+Contagem mensal (16): P1 ×3 · P2 ×4 · P3 ×4 · P4 ×3 · P5 ×2 · comercial directo ≤ 3 (≤ 20%).
 Estilos A/B/C nunca 3 seguidos iguais.
 
 ## Séries fixas
@@ -30,7 +33,7 @@ Estilos A/B/C nunca 3 seguidos iguais.
 ## Espaço reactivo (~15–20%)
 - Segunda da semana 3 e sexta da semana 4 podem ser trocadas por: datas, novidades da empresa, lançamento da KiPUPU, uma notícia muito relevante.
 
-## Stories (3–5 dias por semana)
+## Stories (todos os dias úteis; sábado opcional)
 | Dia | Conteúdo |
 |---|---|
 | Segunda | partilha da publicação + sondagem («Já ouviu falar de…?») |
@@ -38,6 +41,24 @@ Estilos A/B/C nunca 3 seguidos iguais.
 | Quarta | partilha da publicação + caixa de perguntas |
 | Quinta | dica rápida ou pergunta frequente (FAQ do site) |
 | Sexta | partilha da publicação + CTA WhatsApp / «Pedir proposta» |
+| Sábado (opcional) | frase da marca / valor da semana ou partilha da notícia do site |
+
+## WhatsApp (Estados + Canal)
+- **Estados do WhatsApp Business:** todos os dias úteis, publicar a mesma imagem/vídeo do dia (ou o story) com uma frase curta e o link pepereh.com.
+- **Canal do WhatsApp «PEPEREH»:** 1–2 mensagens por semana — a notícia de domingo (com link) e o destaque da semana. Convidar contactos e clientes a seguir o canal.
+- Os textos para o Estado e para o Canal vêm no PLANO.md de cada semana.
+
+## Partilha pelos sócios (kit semanal)
+- No PLANO.md de cada semana: 2 textos curtos (1 para WhatsApp pessoal, 1 para LinkedIn pessoal) para os sócios partilharem a publicação principal da semana, na primeira pessoa e sem exageros.
+
+## Rotina de interacção (15 min por dia útil)
+1. Responder a todos os comentários e mensagens (usar RESPOSTAS-MODELO.md).
+2. Comentar 3–5 publicações de parceiros, clientes potenciais e empresas/instituições angolanas (comentários úteis, nunca spam).
+3. Seguir 5 contas relevantes (empresas, associações empresariais, ecossistema de startups).
+4. Partilhar nos stories menções e publicações relevantes de parceiros.
+
+## Impulsionar (opcional, quando houver orçamento)
+- 1 publicação por mês com melhor desempenho natural; 5 000–10  000 Kz; Luanda; interesses: gestão de empresas, tecnologia, empreendedorismo. Sempre com aprovação prévia.
 Destaques fixos no perfil: Serviços · Casos · Notícias · FAQ · Contacto.
 
 ## Datas âncora (respeitosas, sem conteúdo político)
