@@ -441,6 +441,21 @@ details[open] > summary .fold-ico::after { opacity: 0; }
 .p-trav svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .p-trav__p { stroke-dasharray: 1; stroke-dashoffset: 0; }
 .p-trav.is-moving { filter: drop-shadow(0 14px 30px rgba(46,211,245,.45)); }
+.p-fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 44; pointer-events: none; }
+.p-lock { position: fixed; left: 0; top: 0; z-index: 46; width: 60px; height: 60px; pointer-events: none; opacity: 0; }
+.p-lock i { position: absolute; width: 26%; height: 26%; border: 2px solid #2ed3f5; }
+.p-lock i:nth-child(1) { left: 0; top: 0; border-right: 0; border-bottom: 0; border-radius: 6px 0 0 0; }
+.p-lock i:nth-child(2) { right: 0; top: 0; border-left: 0; border-bottom: 0; border-radius: 0 6px 0 0; border-color: #9b6bff; }
+.p-lock i:nth-child(3) { left: 0; bottom: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 6px; border-color: #5aa8ff; }
+.p-lock i:nth-child(4) { right: 0; bottom: 0; border-left: 0; border-top: 0; border-radius: 0 0 6px 0; border-color: #d63cff; }
+.p-lock b { position: absolute; inset: 22%; border-radius: 50%; border: 2px solid rgba(155,107,255,.7); }
+.p-lock.is-on { animation: lockFade .9s ease-out both; }
+.p-lock.is-on i { animation: lockIn .9s cubic-bezier(.2,.9,.2,1) both; }
+.p-lock.is-on b { animation: lockRing .9s ease-out both; }
+@keyframes lockFade { 0% { opacity: 0; } 15% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes lockIn { 0% { transform: scale(1.8); } 45% { transform: scale(.92); } 60%, 100% { transform: scale(1); } }
+@keyframes lockRing { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.9); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .p-fx, .p-lock { display: none; } }
 @media (prefers-reduced-motion: reduce) { .p-trav { display: none; } .has-p-trav .hero .orb img { opacity: 1; } }
 
 /* Responsive */

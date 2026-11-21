@@ -426,20 +426,35 @@
   }
 
 
-  /* ---------- «P» que viaja pelas secções ---------- */
+  /* ---------- «P» que viaja pelas secções (partículas + mira) ---------- */
   (function () {
     var trav = document.getElementById("p-trav");
     var heroImg = document.querySelector(".hero .orb img");
     if (!trav || !heroImg || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var path = trav.querySelector(".p-trav__p");
     var bg = trav.querySelector(".p-trav__bg");
+    var lock = document.getElementById("p-lock");
+    var cv = document.getElementById("p-fx");
+    var ctx = cv && cv.getContext ? cv.getContext("2d") : null;
     var anchors = [], draw = 1, idleDraw = null, idleK = 0, ticking = false, idleTimer = null;
+    var pose = { x: 0, y: 0, s: 42, mid: 0 }, energy = 0, lastY = window.scrollY, speed = 0, dpr = 1, running = false;
 
-    function box(el) { // posição real, sem transformações das animações
-      var x = 0, y = 0, n = el;
-      while (n) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
-      return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight };
+    /* pontos do «P» (caixa 0–100) */
+    var N = window.innerWidth < 900 ? 140 : 220, parts = [];
+    function pPoint(u) {
+      // 0–0.3: haste; 0.3–1: arco
+      if (u < 0.3) return [32, 76 - (u / 0.3) * 34, 1, 0];
+      var a = (180 + (u - 0.3) / 0.7 * 275.7) * Math.PI / 180;
+      return [52 + 20 * Math.cos(a), 42 + 20 * Math.sin(a), Math.cos(a), Math.sin(a)];
     }
+    for (var k = 0; k < N; k++) {
+      var u = Math.random(), q = pPoint(u), w = (Math.random() - 0.5) * 13, halo = Math.random() < 0.18;
+      var lx = halo ? Math.random() * 100 : q[0] + q[2] * w, ly = halo ? Math.random() * 100 : q[1] + q[3] * w;
+      var t = lx / 100, col = t < 0.5 ? [46 + (155 - 46) * t * 2, 211 + (107 - 211) * t * 2, 245 + 10 * t * 2] : [155 + (214 - 155) * (t - .5) * 2, 107 + (60 - 107) * (t - .5) * 2, 255];
+      parts.push({ lx: lx, ly: ly, x: 0, y: 0, px: 0, py: 0, k: 0.07 + Math.random() * 0.2, ph: Math.random() * 6.28, sz: halo ? 0.6 : 1, col: "rgb(" + (col[0] | 0) + "," + (col[1] | 0) + "," + (col[2] | 0) + ")", halo: halo });
+    }
+
+    function box(el) { var x = 0, y = 0, n = el; while (n) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; } return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight }; }
     function measure() {
       var vh = window.innerHeight, small = window.innerWidth < 900;
       var size = small ? 30 : 42, lineY = Math.round(vh * (small ? 0.24 : 0.28));
@@ -448,72 +463,108 @@
         var eb = sec.querySelector(".eyebrow") || sec.querySelector("h2");
         if (!eb || !eb.offsetParent) return;
         var col = box(eb.parentElement), r = box(eb);
-        anchors.push({
-          scroll: Math.max(0, r.y + r.h / 2 - lineY),
-          x: Math.min(col.x + col.w, window.innerWidth - 16) - size,
-          y: lineY - size / 2,
-          size: size
-        });
+        anchors.push({ scroll: Math.max(0, r.y + r.h / 2 - lineY), x: Math.min(col.x + col.w, window.innerWidth - 16) - size, y: lineY - size / 2, size: size });
       });
       anchors.sort(function (a, b) { return a.scroll - b.scroll; });
+      if (cv) { dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; }
     }
     function lerp(a, b, t) { return a + (b - a) * t; }
     function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
-    function heroPose() {
-      var r = heroImg.getBoundingClientRect();
-      return { x: r.left, y: r.top, size: r.width, scroll: 0 };
-    }
     function frame() {
       ticking = false;
       if (!anchors.length) return;
-      var y = window.scrollY, hero = heroPose();
-      var list = [{ x: hero.x, y: hero.y + y, size: hero.size, scroll: 0, hero: true }].concat(anchors);
+      var y = window.scrollY, r = heroImg.getBoundingClientRect();
+      var list = [{ x: r.left, y: r.top + y, size: r.width, scroll: 0, hero: true }].concat(anchors);
       var i = 0;
       while (i < list.length - 1 && y >= list[i + 1].scroll) i++;
       var a = list[i], b = list[Math.min(i + 1, list.length - 1)];
       var t = b === a ? 0 : Math.min(1, Math.max(0, (y - a.scroll) / (b.scroll - a.scroll)));
-      var e = ease(t);
-      var ay = a.hero ? a.y - y : a.y;
+      var e = ease(t), ay = a.hero ? a.y - y : a.y;
       var px = lerp(a.x, b.x, e), py = lerp(ay, b.y, e), ps = lerp(a.size, b.size, e);
-      // depois da última secção, acompanha o título dela
-      if (i === list.length - 1 && !a.hero) { py = a.y - (y - a.scroll); }
-      var mid = Math.sin(Math.PI * t) * (1 - idleK);
-      var target = 1 - 0.85 * Math.sin(Math.PI * t);
-      draw = idleDraw !== null ? idleDraw : target;
-      trav.style.transform = "translate3d(" + px.toFixed(1) + "px," + py.toFixed(1) + "px,0) rotate(" + (-14 * mid).toFixed(2) + "deg)";
+      if (i === list.length - 1 && !a.hero) py = a.y - (y - a.scroll);
+      // parado entre secções: encosta-se à margem direita para não tapar texto
+      if (idleK > 0 && t > 0.12 && t < 0.88 && !(i === list.length - 1)) {
+        var small = window.innerWidth < 900, ds = small ? 22 : 36, dx = window.innerWidth - ds - (small ? 4 : 24);
+        var dk = ease(idleK);
+        px = lerp(px, dx, dk); ps = lerp(ps, ds, dk);
+      }
+      var raw = Math.sin(Math.PI * t), mid = raw * (1 - idleK);
+      draw = idleDraw !== null ? idleDraw : 1 - 0.9 * raw;
+      pose.x = px; pose.y = py; pose.s = ps; pose.mid = mid;
+      // o emblema desvanece enquanto viaja em partículas
+      var vis = Math.max(0, 1 - mid * 1.6);
+      trav.style.opacity = vis.toFixed(3);
+      trav.style.transform = "translate3d(" + px.toFixed(1) + "px," + py.toFixed(1) + "px,0) rotate(" + (-14 * mid).toFixed(2) + "deg) scale(" + (1 + 0.15 * mid).toFixed(3) + ")";
       trav.style.width = trav.style.height = ps.toFixed(1) + "px";
       bg.setAttribute("rx", (24 + 26 * mid).toFixed(1));
       path.style.strokeDashoffset = (1 - draw).toFixed(3);
-      trav.classList.toggle("is-moving", mid > 0.05);
+      if (lock) { var m = ps * 0.35; lock.style.transform = "translate3d(" + (px - m).toFixed(1) + "px," + (py - m).toFixed(1) + "px,0)"; lock.style.width = lock.style.height = (ps + 2 * m).toFixed(1) + "px"; }
+      kick();
     }
     function request() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+
+    /* desenho das partículas */
+    function kick() { if (!running && ctx) { running = true; requestAnimationFrame(render); } }
+    function render(now) {
+      var target = Math.max(pose.mid, Math.min(1, speed / 40));
+      energy += (target - energy) * 0.12;
+      speed *= 0.9;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      var sc = pose.s / 100, settled = true, tt = now / 1000;
+      for (var n = 0; n < parts.length; n++) {
+        var p = parts[n];
+        var turb = energy * pose.s * (p.halo ? 1.6 : 0.9);
+        var tx = pose.x + p.lx * sc + Math.sin(tt * 3 + p.ph) * turb + Math.cos(tt * 1.7 + p.ph * 2) * turb * 0.6;
+        var ty = pose.y + p.ly * sc + Math.cos(tt * 2.3 + p.ph) * turb;
+        if (!p.x && !p.y) { p.x = tx; p.y = ty; }
+        p.px = p.x; p.py = p.y;
+        p.x += (tx - p.x) * p.k; p.y += (ty - p.y) * p.k;
+        var dx = p.x - p.px, dy = p.y - p.py, v = Math.abs(dx) + Math.abs(dy);
+        if (v > 0.15 || Math.abs(tx - p.x) > 0.5) settled = false;
+        var alpha = Math.min(1, energy * 1.4 + Math.min(1, v / 6)) * (p.halo ? 0.55 : 0.95);
+        if (alpha < 0.02) continue;
+        ctx.globalAlpha = alpha;
+        if (v > 2.5) { // rasto de dados
+          ctx.strokeStyle = p.col; ctx.lineWidth = Math.max(1, sc * 3 * p.sz);
+          ctx.beginPath(); ctx.moveTo(p.px - dx * 2.5, p.py - dy * 2.5); ctx.lineTo(p.x, p.y); ctx.stroke();
+        }
+        var z = Math.max(1.4, sc * 6 * p.sz);
+        ctx.fillStyle = p.col; ctx.fillRect(p.x - z / 2, p.y - z / 2, z, z);
+      }
+      ctx.globalAlpha = 1;
+      if (settled && energy < 0.01) { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); return; }
+      requestAnimationFrame(render);
+    }
+
+    function lockOn() {
+      if (!lock) return;
+      lock.classList.remove("is-on"); void lock.offsetWidth; lock.classList.add("is-on");
+    }
     function onScroll() {
+      var y = window.scrollY; speed += Math.abs(y - lastY); lastY = y;
+      var wasMoving = pose.mid > 0.2 || speed > 30;
       idleDraw = null; idleK = 0;
       clearTimeout(idleTimer);
       idleTimer = setTimeout(function () {
-        // parou: o P completa-se
-        var start = draw, t0 = performance.now();
+        var start = draw, t0 = performance.now(), fired = false;
         (function step(now) {
-          var k = Math.min(1, (now - t0) / 380);
+          var k = Math.min(1, (now - t0) / 520);
           idleDraw = start + (1 - start) * ease(k); idleK = ease(k);
           frame();
+          if (!fired && k > 0.55) { fired = true; if (wasMoving || start < 0.95) lockOn(); }
           if (k < 1) requestAnimationFrame(step);
         })(t0);
-      }, 160);
+      }, 140);
       request();
     }
-    function init() {
-      measure();
-      document.documentElement.classList.add("has-p-trav");
-      request();
-    }
+    function init() { measure(); document.documentElement.classList.add("has-p-trav"); request(); }
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", function () { measure(); request(); });
     window.addEventListener("load", function () { measure(); request(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); request(); });
     document.addEventListener("toggle", function () { setTimeout(function () { measure(); request(); }, 50); }, true);
     init();
-    // o P do topo flutua: actualizar enquanto o topo estiver visível
     (function float() { if (window.scrollY < window.innerHeight) request(); requestAnimationFrame(float); })();
   })();
 
