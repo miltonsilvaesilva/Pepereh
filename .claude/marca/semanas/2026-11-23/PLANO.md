@@ -89,7 +89,7 @@ Hora sugerida: **12h30** (Luanda). Agendar no **Meta Business Suite** (Instagram
 ---
 
 ## EXTRA — Quinta, 26/11 — Reel «Em 30 segundos: Site, Instagram ou WhatsApp Business?» (pilar 4 · estilo C)
-**Estado deste item: RASCUNHO — aguarda aprovação.**
+**Estado deste item: APROVADO em 21/11/2026.**
 **Vídeo:** `qui26-reel.mp4` (18 s, 9:16) · capa: `qui26-reel-cena-1.png` · reaproveita o carrossel de quarta.
 **Som:** faixa instrumental animada da biblioteca do Instagram/Facebook.
 
