@@ -199,7 +199,7 @@ p { margin: 0; }
 .ventures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .venture { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; transition: transform .2s ease, box-shadow .2s ease; }
 .venture:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(11,11,20,.08); }
-.venture__logo { height: 110px; display: flex; align-items: center; margin-top: 18px; }
+.venture__logo { height: 110px; display: flex; align-items: center; margin-top: 36px; }
 .venture__logo img { max-height: 92px; max-width: 100%; width: auto; }
 .venture__logo--dark { background: #01070a; border-radius: 16px; justify-content: center; overflow: hidden; }
 .venture__logo--dark img { max-height: 110px; -webkit-mask-image: radial-gradient(ellipse 70% 70% at center, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 70% 70% at center, #000 62%, transparent 100%); }
