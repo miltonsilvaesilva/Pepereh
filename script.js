@@ -65,6 +65,8 @@
     "sc.b": "Request a proposal",
     "cat.eyebrow": "Technology solutions",
     "cat.title": "In detail: what we deliver.",
+    "cat.hint": "Tap a module to see all solutions.",
+    "nav.areas": "Our 5 areas",
     "cat.cta": "Can't find what you're looking for? Tell us about your challenge.",
     "who.eyebrow": "Who we work with",
     "who.title": "Solutions tailored to every client.",
@@ -371,6 +373,57 @@
         .then(function () { btn.disabled = false; });
     });
   });
+
+
+  /* ---------- Abrir/fechar, submenu, topo e secção activa ---------- */
+  var desk = window.matchMedia("(min-width: 901px)");
+  var deskOpen = document.querySelectorAll("details[data-open-desktop]");
+  function syncCards() { deskOpen.forEach(function (d) { if (desk.matches) d.open = true; else d.open = false; }); }
+  syncCards();
+  if (desk.addEventListener) desk.addEventListener("change", syncCards);
+  deskOpen.forEach(function (d) {
+    d.querySelector("summary").addEventListener("click", function (e) { if (desk.matches) e.preventDefault(); });
+  });
+
+  function openTarget(hash) {
+    if (!hash || hash.length < 2) return;
+    var el = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (el && el.tagName === "DETAILS") {
+      el.open = true;
+      setTimeout(function () { el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 30);
+    }
+  }
+  openTarget(location.hash);
+  window.addEventListener("hashchange", function () { openTarget(location.hash); });
+  document.querySelectorAll('.nav__sub a').forEach(function (a) {
+    a.addEventListener("click", function () {
+      var h = a.getAttribute("href"); var i = h.indexOf("#");
+      if (i > -1 && (location.pathname === "/" || location.pathname.slice(-1) === "/")) openTarget(h.slice(i));
+    });
+  });
+
+  var toTop = document.getElementById("to-top");
+  if (toTop) {
+    window.addEventListener("scroll", function () { toTop.classList.toggle("is-visible", window.scrollY > 900); }, { passive: true });
+    toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  }
+
+  if ("IntersectionObserver" in window) {
+    var map = {};
+    document.querySelectorAll('.nav__links a[href*="#"]').forEach(function (a) {
+      var id = a.getAttribute("href").split("#")[1];
+      if (id && !/^sol-/.test(id)) (map[id] = map[id] || []).push(a.classList.contains("nav__dd-top") ? a : a);
+    });
+    var secs = Object.keys(map).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        document.querySelectorAll(".nav__links .is-current").forEach(function (x) { x.classList.remove("is-current"); });
+        (map[en.target.id] || []).forEach(function (a) { if (!a.closest(".nav__sub")) a.classList.add("is-current"); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    secs.forEach(function (sec) { spy.observe(sec); });
+  }
 
   /* ---------- Animação ao aparecer ---------- */
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

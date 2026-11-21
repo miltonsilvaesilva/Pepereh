@@ -6,7 +6,15 @@
     </a>
     <nav class="nav__links" id="menu" aria-label="Principal">
       <a href="{{ '/#sobre' | relative_url }}" data-i18n="nav.about">Sobre</a>
-      <a href="{{ '/#servicos' | relative_url }}" data-i18n="nav.services">Serviços</a>
+      <div class="nav__dd">
+        <a href="{{ '/#servicos' | relative_url }}" class="nav__dd-top" aria-haspopup="true"><span data-i18n="nav.services">Serviços</span><svg class="nav__caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav__sub">
+          <a href="{{ '/#servicos' | relative_url }}" data-i18n="nav.areas">As 5 áreas</a>
+          {%- for m in site.data.solucoes %}
+          <a href="{{ '/#sol-' | append: m.id | relative_url }}"><span data-only="pt">{{ m.titulo.pt }}</span><span data-only="en">{{ m.titulo.en }}</span></a>
+          {%- endfor %}
+        </div>
+      </div>
       <a href="{{ '/#experiencia' | relative_url }}" data-i18n="nav.experience">Experiência</a>
       <a href="{{ '/#negocios' | relative_url }}" data-i18n="nav.ventures">Nossos Negócios</a>
       <a href="{{ '/noticias/' | relative_url }}" data-i18n="nav.news">Notícias</a>
