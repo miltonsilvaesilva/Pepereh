@@ -6,8 +6,9 @@
   link: ""
   categoria: { pt: "Serviços automóveis", en: "Car services" }
   texto: { pt: "A plataforma que lava o seu carro.", en: "The platform that washes your car." }
-- nome: iCont
-  logo: /assets/negocios/icont
+- nome: IQONZI
+  logo: /assets/negocios/iqonzi
+  fundo: escuro
   estado: brevemente
   link: ""
   categoria: { pt: "Contabilidade e gestão", en: "Accounting and management" }

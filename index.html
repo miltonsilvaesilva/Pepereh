@@ -249,7 +249,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
         {%- for n in site.data.negocios %}
         <article class="venture">
           {%- if n.estado == "brevemente" %}<span class="badge venture__badge" data-i18n="ventures.soon">Brevemente</span>{% endif %}
-          <div class="venture__logo"><picture><source srcset="{{ n.logo | append: '.webp' | relative_url }}" type="image/webp"><img src="{{ n.logo | append: '.png' | relative_url }}" alt="{{ n.nome }}" decoding="async"></picture></div>
+          <div class="venture__logo{% if n.fundo == "escuro" %} venture__logo--dark{% endif %}"><picture><source srcset="{{ n.logo | append: '.webp' | relative_url }}" type="image/webp"><img src="{{ n.logo | append: '.png' | relative_url }}" alt="{{ n.nome }}" decoding="async"></picture></div>
           <div class="venture__meta">
             <span class="venture__cat"><span data-only="pt">{{ n.categoria.pt }}</span><span data-only="en">{{ n.categoria.en }}</span></span>
           </div>

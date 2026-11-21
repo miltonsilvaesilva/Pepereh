@@ -201,6 +201,8 @@ p { margin: 0; }
 .venture:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(11,11,20,.08); }
 .venture__logo { height: 110px; display: flex; align-items: center; margin-top: 18px; }
 .venture__logo img { max-height: 92px; max-width: 100%; width: auto; }
+.venture__logo--dark { background: #01070a; border-radius: 16px; justify-content: center; overflow: hidden; }
+.venture__logo--dark img { max-height: 110px; -webkit-mask-image: radial-gradient(ellipse 70% 70% at center, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 70% 70% at center, #000 62%, transparent 100%); }
 .venture__meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 .venture__cat { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .venture p { color: var(--ink-2); font-size: 1rem; }
