@@ -65,6 +65,9 @@
     "sc.b": "Request a proposal",
     "cat.eyebrow": "Technology solutions",
     "cat.title": "In detail: what we deliver.",
+    "mv.eyebrow": "Who we are",
+    "mv.title": "Mission, vision and values.",
+    "fold.open": "Open section",
     "cat.hint": "Tap a module to see all solutions.",
     "nav.areas": "Our 5 areas",
     "cat.cta": "Can't find what you're looking for? Tell us about your challenge.",
@@ -374,6 +377,110 @@
     });
   });
 
+
+
+  /* ---------- Secções em separadores (abrir/fechar) ---------- */
+  var folds = [].slice.call(document.querySelectorAll("section[data-fold]"));
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  folds.forEach(function (sec, idx) {
+    var h2 = sec.querySelector("h2");
+    if (!h2) return;
+    var eyebrow = h2.parentNode.querySelector(".eyebrow");
+    var bodyId = sec.id + "-conteudo";
+    // barra do separador
+    var wrap = document.createElement("div");
+    wrap.className = "container sec-bar-wrap";
+    var bar = document.createElement("div");
+    bar.className = "sec-bar";
+    bar.setAttribute("role", "button");
+    bar.setAttribute("tabindex", "0");
+    bar.setAttribute("aria-expanded", "false");
+    bar.setAttribute("aria-controls", bodyId);
+    var txt = document.createElement("div");
+    txt.className = "sec-bar__txt";
+    if (eyebrow) txt.appendChild(eyebrow);
+    txt.appendChild(h2);
+    var chev = document.createElement("span");
+    chev.className = "sec-chev";
+    chev.setAttribute("aria-hidden", "true");
+    chev.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>';
+    bar.appendChild(txt); bar.appendChild(chev); wrap.appendChild(bar);
+    // corpo
+    var body = document.createElement("div");
+    body.className = "sec-body"; body.id = bodyId;
+    var inner = document.createElement("div");
+    inner.className = "sec-body__inner";
+    while (sec.firstChild) inner.appendChild(sec.firstChild);
+    body.appendChild(inner);
+    sec.appendChild(wrap); sec.appendChild(body);
+    sec.classList.add("sec-fold");
+    // limpar colunas vazias deixadas pelo título
+    sec.querySelectorAll(".split > div, .head, .head--row > div").forEach(function (d) {
+      if (!d.children.length && !d.textContent.trim()) d.classList.add("is-empty");
+    });
+    // pontinhos de passagem
+    if (idx > 0) {
+      var dots = document.createElement("div");
+      dots.className = "sec-dots"; dots.setAttribute("aria-hidden", "true");
+      dots.innerHTML = "<i></i><i></i><i></i>";
+      sec.parentNode.insertBefore(dots, sec);
+    }
+    function toggle() { setOpen(sec, !sec.classList.contains("is-open"), true); }
+    bar.addEventListener("click", toggle);
+    bar.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+  });
+
+  function animateDots(sec) {
+    [sec.previousElementSibling, sec.nextElementSibling].forEach(function (d) {
+      if (d && d.classList.contains("sec-dots")) { d.classList.remove("is-anim"); void d.offsetWidth; d.classList.add("is-anim"); }
+    });
+  }
+  function setOpen(sec, open, scroll) {
+    if (open) folds.forEach(function (o) { if (o !== sec) closeOne(o); });
+    sec.classList.toggle("is-open", open);
+    var bar = sec.querySelector(".sec-bar");
+    if (bar) bar.setAttribute("aria-expanded", open ? "true" : "false");
+    animateDots(sec);
+    if (open && scroll) {
+      setTimeout(function () {
+        var y = sec.getBoundingClientRect().top + window.scrollY - 76;
+        window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+      }, reduced ? 0 : 380);
+    }
+  }
+  function closeOne(o) {
+    o.classList.remove("is-open");
+    var b = o.querySelector(".sec-bar"); if (b) b.setAttribute("aria-expanded", "false");
+  }
+  window.PEPEREH_openSection = function (el) {
+    var sec = el && (el.matches && el.matches("section.sec-fold") ? el : el.closest && el.closest("section.sec-fold"));
+    if (sec && !sec.classList.contains("is-open")) setOpen(sec, true, false);
+    return sec;
+  };
+  // ligações internas (#servicos, #contacto, …) abrem o separador certo
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a) return;
+    var href = a.getAttribute("href"), i = href.indexOf("#");
+    var path = href.slice(0, i);
+    if (path && path !== "/" && path !== location.pathname) return;
+    var el = document.getElementById(decodeURIComponent(href.slice(i + 1)));
+    if (!el) return;
+    var sec = window.PEPEREH_openSection(el);
+    if (sec) {
+      e.preventDefault();
+      history.replaceState(null, "", href.slice(i));
+      if (el.tagName === "DETAILS") el.open = true;
+      setTimeout(function () {
+        var y = el.getBoundingClientRect().top + window.scrollY - 76;
+        window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+      }, reduced ? 0 : 380);
+    }
+  });
+  if (location.hash.length > 1) {
+    var start = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (start) window.PEPEREH_openSection(start);
+  }
 
   /* ---------- Abrir/fechar, submenu, topo e secção activa ---------- */
   var desk = window.matchMedia("(min-width: 901px)");

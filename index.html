@@ -28,7 +28,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- SOBRE -->
-  <section class="section" id="sobre">
+  <section class="section" id="sobre" data-fold>
     <div class="container split">
       <div>
         <p class="eyebrow" data-i18n="about.eyebrow">A nossa história</p>
@@ -49,7 +49,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- SERVIÇOS -->
-  <section class="section section--tint" id="servicos">
+  <section class="section section--tint" id="servicos" data-fold>
     <div class="container">
       <div class="head">
         <p class="eyebrow" data-i18n="services.eyebrow">O que fazemos</p>
@@ -151,7 +151,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- PARA QUEM -->
-  <section class="section" id="clientes">
+  <section class="section" id="clientes" data-fold>
     <div class="container">
       <div class="head">
         <p class="eyebrow" data-i18n="who.eyebrow">Para quem trabalhamos</p>
@@ -168,7 +168,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- PORQUÊ -->
-  <section class="section section--dark" id="porque">
+  <section class="section section--dark" id="porque" data-fold>
     <div class="container">
       <div class="head">
         <p class="eyebrow eyebrow--light" data-i18n="why.eyebrow">Porquê escolher a PEPEREH</p>
@@ -186,7 +186,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- EXPERIÊNCIA -->
-  <section class="section" id="experiencia">
+  <section class="section" id="experiencia" data-fold>
     <div class="container">
       <div class="head">
         <p class="eyebrow" data-i18n="exp.eyebrow">Experiência</p>
@@ -210,8 +210,12 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- MISSÃO VISÃO VALORES -->
-  <section class="section section--tint" id="missao">
+  <section class="section section--tint" id="missao" data-fold>
     <div class="container">
+      <div class="head head--sm head--mv">
+        <p class="eyebrow" data-i18n="mv.eyebrow">A nossa essência</p>
+        <h2 data-i18n="mv.title">Missão, visão e valores.</h2>
+      </div>
       <div class="mv">
         <div class="mv__box">
           <p class="eyebrow" data-i18n="mission.eyebrow">A nossa missão</p>
@@ -238,7 +242,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </section>
 
   <!-- NOSSOS NEGÓCIOS -->
-  <section class="section" id="negocios">
+  <section class="section" id="negocios" data-fold>
     <div class="container">
       <div class="head">
         <p class="eyebrow" data-i18n="ventures.eyebrow">Nossos Negócios</p>
@@ -264,7 +268,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   <!-- NOTÍCIAS -->
   {%- assign pt_posts = site.posts | where: "lang", "pt" -%}
   {%- if pt_posts.size > 0 %}
-  <section class="section section--tint" id="noticias">
+  <section class="section section--tint" id="noticias" data-fold>
     <div class="container">
       <div class="head head--row">
         <div>
@@ -285,7 +289,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   {%- endif %}
 
   <!-- FAQ -->
-  <section class="section" id="faq">
+  <section class="section" id="faq" data-fold>
     <div class="container split">
       <div>
         <p class="eyebrow" data-i18n="faq.eyebrow">Perguntas frequentes</p>
@@ -331,7 +335,7 @@ description: "Empresa angolana de tecnologia em Luanda: desenvolvimento de softw
   </script>
 
   <!-- CONTACTO -->
-  <section class="section section--dark" id="contacto">
+  <section class="section section--dark" id="contacto" data-fold>
     <div class="container contact">
       <div>
         <p class="eyebrow eyebrow--light" data-i18n="contact.eyebrow">Pedir proposta</p>
