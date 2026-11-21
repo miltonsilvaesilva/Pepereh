@@ -418,29 +418,16 @@
     sec.querySelectorAll(".split > div, .head, .head--row > div").forEach(function (d) {
       if (!d.children.length && !d.textContent.trim()) d.classList.add("is-empty");
     });
-    // pontinhos de passagem
-    if (idx > 0) {
-      var dots = document.createElement("div");
-      dots.className = "sec-dots"; dots.setAttribute("aria-hidden", "true");
-      dots.innerHTML = "<i></i><i></i><i></i>";
-      sec.parentNode.insertBefore(dots, sec);
-    }
     function toggle() { setOpen(sec, !sec.classList.contains("is-open"), true); }
     bar.addEventListener("click", toggle);
     bar.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
   });
 
-  function animateDots(sec) {
-    [sec.previousElementSibling, sec.nextElementSibling].forEach(function (d) {
-      if (d && d.classList.contains("sec-dots")) { d.classList.remove("is-anim"); void d.offsetWidth; d.classList.add("is-anim"); }
-    });
-  }
   function setOpen(sec, open, scroll) {
     if (open) folds.forEach(function (o) { if (o !== sec) closeOne(o); });
     sec.classList.toggle("is-open", open);
     var bar = sec.querySelector(".sec-bar");
     if (bar) bar.setAttribute("aria-expanded", open ? "true" : "false");
-    animateDots(sec);
     if (open && scroll) {
       setTimeout(function () {
         var y = sec.getBoundingClientRect().top + window.scrollY - 76;
