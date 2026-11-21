@@ -49,6 +49,7 @@
 - **Named customers / logos:** nenhum autorizado ainda
 - **Outcomes / case results:** a recolher (casos de estudo sem nomear clientes)
 - **Credentials / track record:** experiência em interoperabilidade, Janelas Únicas, ERP, portais, gestão documental, apps, pagamentos, BI, automação, redes, websites
+- **Catálogo de soluções (site, desde 21/11/2026, ver _data/solucoes.yml):** software à medida (ERP/CRM/BPM, portais, apps, workflows); cloud (Azure, AWS, cloud privada, backup e DR, migrações); dados (BI, analytics, machine learning, visualização); infra-estruturas (redes estruturadas, energia socorrida/UPS/geradores/renováveis, micro datacenters); segurança e mobilidade (videovigilância IP, controlo de acessos, biometria, alarmes, monitorização 24/7, MDM, VPN, endpoints); consultoria técnica e outsourcing de TI (requisitos, arquitectura, roadmap, Microsoft 365, Linux, VMware, SharePoint, suporte e manutenção); fornecimento (servidores, NAS/SAN, rede, postos de trabalho, licenças Microsoft/Veeam/Fortinet/Adobe, UTM, firewalls, antivírus, anti-ransomware, gestão de identidade). Não usar «parceiro oficial/certificado» sem confirmação.
 - **Social proof:** testemunhos existem — por recolher, com autorização
 - **Usage rights note:** nenhum testemunho autorizado até agora
 
