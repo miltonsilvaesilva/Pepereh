@@ -1,5 +1,5 @@
 # Semana 3 — 30 de Novembro a 4 de Dezembro de 2026
-**Estado: RASCUNHO — aguarda aprovação.** Nada é publicado sem autorização.
+**Estado: APROVADO em 25/11/2026** pelo responsável da PEPEREH (todas as publicações, stories e texto para os sócios).
 
 Posição no calendário: **5.ª segunda-feira de Novembro** → pilares com menos publicações no mês (P2 Angola digital, P3 Gestão, P5 Think big). Ritmo v2: 4 publicações (seg, qua, **qui reel**, sex) + stories todos os dias úteis. Sem WhatsApp.
 Hora sugerida: **12h30** (Luanda). Agendar no **Meta Business Suite** (Instagram + Facebook).
